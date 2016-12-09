@@ -1,0 +1,16 @@
+.name-gender {
+	font-size: 30px;
+	line-height: 34px;
+	display: inline-block;
+	height: 34px;
+	padding-right: 52px;
+	&.male {
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAdVBMVEUAAABvif9thf9uhP9thP9uhf9thP9uhf9thf9uhf9thP9uhP+Alf+An/9uhf9whf9vh/9thP////90iv/5+v/19//Gz//N1f+7xv/j6P/DzP+Pof+Dlv+9yP+KnP9/k//p7f+Lnf/U2/+mtP+bq//x8/+zv/+vblNRAAAAEXRSTlMAI/r59erp0cmbmokMCFgwVwDnt08AAAE8SURBVDjLhZPXsoMwDERNS2ghkWzTTAs3yf9/4qUImzbDedLMriVjVswQJ6HvOY7nh6+YHbECFzRuYO3kR2TDBjt6bI7f4cB91eR5gxNuT32e9IPDovm7/hlOpMOU+R4RnBqyoYymATYc+MwdwB6HBKd6PxkgYCzW71PlhZRFXsFHYP43G9yYJUDUSPSDDmSAhIWk94il4lyViCIHbQiZv5z/vufq/cUagDctjPjMm+ejGHRyCKxgwWMONShBU2Kta4cMBSpjUFgYA42QyI2BozQj6JJiaxC69ukzO2yMocFO1yFL6F65MeSrG7/oqRsUlX5yYdq58fKzUuxamGg7TGEh0L+bFyh/7SD/JBZcR9cygeFjToQYk6J1iDaRU5lElJlaBfuxDy3n+9Bex/56ca5X73p5j+ufrNb/H0vVOGMW3/mtAAAAAElFTkSuQmCC) right center no-repeat;
+		background-size: auto 32px;
+	}
+	&.female {
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEUAAADvY5XvZJTxZJf/c5nuZJXvY5TvZJXvZJXvZJTuZZXxZZfvZZXuY5T////4v9P3uM70or/+/P3+9/rxgqr98/f5ydrweqT86O/74OrwdqLua5nuaZj98PX84+z60uD4wNT2rsfyiq7yiK3xhqzvbptTxmRvAAAADXRSTlMA+pojCvXq6dHJiVgwbZF8BwAAATNJREFUOMuFU9uygjAMbAuigF055Y541///xQM0JIM4w76QNptsGhIlCFMTR1pHsUlDtUZgdpaxM8GXO0y0XUAn4SL8YFc4BOI/7v1dnbVl2Wa1P+2PHE/+zGGCy4gRkD7lv8HdX5/P6+5wIxVfR0LxuBTeKi6gHMkkoL2+c4OfGM75OvQoYuYEJ8s4zSnMUAH154q3EN64UsdCldJdjrMQzsjJSpVhQi+EnglGxWQ1KIRQoCErVtGyru+KI6U5KK8toc45nWaCrdB03uoaVJYJERfWonx0g/tRou0tS8TytgpAngOo5MWxMlbwrEqgrJ5WYHyjBMDynFKr1wRutWj8jQCmDyvQ76ZgwfzIwA+Mx2kEMH3oKpGR+1nDIZShXRNkaGXshUBjv70426u3vbyb6/8PX7Mr+8Z/EvkAAAAASUVORK5CYII=) right center no-repeat;
+		background-size: auto 32px;
+	}
+}
+

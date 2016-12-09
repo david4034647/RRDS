@@ -1,0 +1,28 @@
+@mixin way-step-v($circleW: 12px, $lineColor: $orange, $top: 28px) {
+	&:before {
+		position: absolute;
+		z-index: 5;
+		top: $top / 2;
+		left: 0;
+		display: block;
+		box-sizing: border-box;
+		width: $circleW;
+		height: $circleW;
+		content: "";
+		transform: translate(-50%, -50%);
+		background: url(./images/icon_step_circle.png) no-repeat center center;
+		background-size: 100% 100%;
+	}
+	&:after {
+		position: absolute;
+		z-index: 2;
+		top: $top / 2;
+		left: 0;
+		display: inline-block;
+		width: 0;
+		height: 100%;
+		content: "";
+		transform: translate(-50%, 0);
+		border-left: $lineColor 1px dashed; /*no*/
+	}
+}

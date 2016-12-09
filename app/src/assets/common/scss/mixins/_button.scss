@@ -1,0 +1,28 @@
+@mixin btn($height, $btnColor, $btnBg, $borderRadius: 0) {
+	font-size: 28px;
+	font-weight: normal;
+	line-height: $height;
+	display: inline-block;
+	width: 100%;
+	height: $height;
+	text-align: center;
+	color: $btnColor;
+	border: 0;
+	background: $btnBg;
+	border-radius: $borderRadius;
+	box-sizing: border-box;
+	&.disabled {
+		background-color: $btnDisabledBg;
+		color: $btnDisabledColor;
+	}
+	&.end, &.soldout {
+		background-color: $btnEndBg;
+		color: $btnDisabledColor;
+	}
+	&.remind {
+		background-color: $white;
+		color: $orange;
+		border: 1px $orange solid; /*no*/
+
+	}
+}

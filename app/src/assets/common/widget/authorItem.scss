@@ -1,0 +1,44 @@
+.author-item {
+	position: relative;
+	padding: 30px;
+	border: 1px #e4e6e5 solid;
+	.author-avatar {
+		position: absolute;
+		top: 50px;
+		right: 40px;
+		width: 118px;
+		height: 118px;
+		z-index: 8;
+		background-size: cover;
+		border-radius: 50%;
+
+	}
+
+	.author-name {
+		height: 50px;
+		line-height: 50px;
+		color: #21729d;
+		font-size: 40px;
+	}
+	.author-info {
+		height: 56px;
+		line-height: 40px;
+		color: #999999;
+		font-size: 16px;
+	}
+
+	.author-tag {
+		width: 80%;
+		color: #0083ca;
+		span {
+			display: inline-block;
+			margin: 0 15px 15px 0;
+			height: 40px;
+			line-height: 40px;
+			padding: 0 15px;
+			font-size: 20px;
+			border: 1px #0083ca solid;
+			border-radius: 10px;
+		}
+	}
+}

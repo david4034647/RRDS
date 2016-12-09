@@ -1,0 +1,38 @@
+.mod {
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	background-color: $bgGrey;
+}
+
+.sec {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+.row {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.col {
+	display: table-cell;
+	vertical-align: middle;
+	&-lf {
+		text-align: left;
+	}
+	&-rt {
+		text-align: right;
+	}
+}
+
+.bottom-fixed {
+	@include clearfix();
+	position: fixed;
+	z-index: 2;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}

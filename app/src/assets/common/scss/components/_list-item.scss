@@ -1,0 +1,5 @@
+@import "../mixins/index";
+
+.list-item {
+	@include list-item();
+}

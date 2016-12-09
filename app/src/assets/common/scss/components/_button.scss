@@ -1,0 +1,5 @@
+@import "../mixins/index";
+
+.btn {
+	@include btn($btnHeight, $btnDefaultColor, $btnDefaultBg);
+}

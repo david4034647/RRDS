@@ -1,0 +1,21 @@
+@mixin list-item() {
+	position: relative;
+	width: 100%;
+	padding: 20px 0;
+	color: $darkTxtColor;
+	border-bottom: #e1e1e1 1px solid; /*no*/
+	&.arrow {
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 30px;
+			display: block;
+			width: 16px;
+			height: 16px;
+			content: "";
+			transform: translate3d(0, -50%, 0) rotate(-45deg);
+			border-right: $borderColor 1px solid;/*no*/
+			border-bottom: $borderColor 1px solid;/*no*/
+		}
+	}
+}

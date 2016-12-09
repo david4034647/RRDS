@@ -1,0 +1,9 @@
+@mixin value() {
+	.value-raise {
+		color: $riseColor !important;
+	}
+	.value-fall {
+		color: $fallColor !important;
+	}
+}
+

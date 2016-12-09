@@ -1,0 +1,46 @@
+// Prefix classname
+$cssPrefix: cfp-;
+
+// ------ Base & Require ------
+
+$fontFamily: "Helvetica Neue", Helvetica, "PingFang SC", "STHeitiSC-Light", "Tahoma", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+// Color
+$orange: #f37021;
+$white: #ffffff;
+$baseLogoBlue: #505082;
+
+// blue level
+$lightblue: #1faed6;
+$darkblue: #242736;
+
+// grey level
+$deepGrey: #333333;
+$lightDeepGrey: #555555;
+$mediumGrey: #666666;
+$grey: #999999;
+$weakGrey: #aaaaaa;
+$lightGrey: #cccccc;
+$bgGrey: #eeeeee;
+
+// boder color
+$borderColor: #cccccc;
+
+// text color
+$darkTxtColor: #222735;
+$txtColor: #8a8c93;
+
+// btn
+$btnHeight: 79px;
+$btnBorderRadiusBase: 5px;
+$btnBorderRadiusLarge: 10px;
+$btnDefaultBg: $orange;
+$btnDefaultColor: $white;
+$btnDisabledBg: $lightGrey;
+$btnDisabledColor: $white;
+$btnEndBg: #8c9fa6;
+
+// 收益涨幅颜色
+$riseColor: $orange;
+$fallColor: #3aa273;
+

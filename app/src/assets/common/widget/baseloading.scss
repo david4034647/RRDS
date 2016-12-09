@@ -1,0 +1,35 @@
+
+.base-loading {
+	padding: 20px 0;
+	text-align: center;
+	.icon-loading {
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		margin-right: 20px;
+		animation: backward_loading 1.2s linear infinite;
+		vertical-align: middle;
+		border-radius: 100%;
+		background-image: url(https://dn-ygbimg.qbox.me/acts/act_20160604_5/icon_baseloading.png);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 100% 100%;
+	}
+	.txt {
+		line-height: 24px;
+		font-size: 22px;
+		display: inline-block;
+		vertical-align: middle;
+		color: #8a8c93;
+	}
+}
+@-webkit-keyframes backward_loading {
+	0% {
+		-webkit-transform: rotate(0deg);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: rotate(-360deg);
+		opacity: 1;
+	}
+}

@@ -1,0 +1,23 @@
+.notice-bar {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 80px;
+	padding-right: 30px;
+	padding-left: 80px;
+	background: #fef5ef  url(https://dn-ygbimg.qbox.me/acts/act_20160604_5/icon_notice.png) no-repeat 30px center;
+	background-size: 32px 32px;
+	.notice-info {
+		@include ellipsis();
+		font-size: 26px;
+		line-height: 80px;
+		width: 100%;
+		color: $orange;
+	}
+	&.notice-fixed {
+		position: fixed;
+		z-index: 10;
+		top: 0;
+		left: 0;
+	}
+}
