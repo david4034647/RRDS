@@ -55,41 +55,12 @@ class RrddMainPage extends Component {
     // todo 添加具体的内容
     return (
       <div>
-      <NavBar navbarType={NAVBAR_SEARCH} onClose={() => {
-        //window.history.back();
-        this.handleClick();
-      }}/>
-
-      <Tabs defaultActiveKey="1" animated={false} onChange={this.tabsChange()}>
-      <TabPane tab="秒杀" key="1">
       <GoodsList 
-      loadList={this.props.loadList}
-      isFetching={this.props.isFetching}
-      error={this.props.error}
-      {...this.props.articleData}
+        loadList={this.props.loadList}
+        isFetching={this.props.isFetching}
+        error={this.props.error}
+        {...this.props.articleData}
       />
-      </TabPane>
-
-      <TabPane tab="拼团" key="2">
-      <GoodsList 
-      loadList={this.props.loadList}
-      isFetching={this.props.isFetching}
-      error={this.props.error}
-      {...this.props.articleData}
-      />
-      </TabPane>
-
-      <TabPane tab="砍价" key="3">
-      <GoodsList 
-      loadList={this.props.loadList}
-      isFetching={this.props.isFetching}
-      error={this.props.error}
-      {...this.props.articleData}
-      />
-      </TabPane>
-
-      </Tabs>
-
       </div>
     );
   }

@@ -1,0 +1,51 @@
+.goods-item {
+	height: 304px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #ffffff;
+
+	.goods-pic {
+			position: relative;
+			float: left;
+			height: 288px;
+			width: 288px;
+			top: 8px;
+			left: 8px;
+			margin-right: 20px;
+			z-index: 1;
+	}
+
+	.goods-context {
+		padding-left: (48+288)px;
+		background-color: Yellow;
+		z-index: 8;
+		.goods-name {
+			font-size: 28px;
+			color: #333333;
+			max-height: 60px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.goods-price {
+			position: relative;
+			height: 30px;
+			min-height: 22px;
+			top: 16px;
+
+			.bargain-price {
+				font-size: 24px;
+				color: #f14557;
+			}
+
+			.original-price {
+				font-size: 20px;
+				color: #666666;
+			}
+		}
+	}
+
+}
+
+
+
