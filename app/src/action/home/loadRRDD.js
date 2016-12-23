@@ -29,11 +29,10 @@ function loadList(page, refresh, showLoading) {
 exports.loadList = (refresh = false, showLoading = true) => {
   return (dispatch, getState) => {
     const {isFetching} = getState().page;
-    //console.log(dispatch);
-    //console.log(getState().page);
-    //console.log(getState());
     const {totalPage = 0} = getState().page && getState().page.articleData;
     let {page = 0} = getState().page && getState().page.articleData;
+    console.log("====totalPage:" + totalPage);
+    console.log("====page:" + page);
 
 
     //判断是否刷新

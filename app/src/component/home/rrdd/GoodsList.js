@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import ArticleItem from '../../widget/common/ArticleItem';
+import GoodsBargainItem from './GoodsBargainItem';
 import InfiniteList from '../../../component/widget/InfiniteList';
-
 
 export default class GoodsList extends Component {
   static displayName = 'RrddMainGoodsList';
@@ -28,7 +27,7 @@ export default class GoodsList extends Component {
   }
 
   renderItem = (item, key) => {
-    return <ArticleItem {...item} key={key} />;
+    return <GoodsBargainItem {...item} key={key} />;
   };
 
   renderItems = (items, props) => {
@@ -41,7 +40,7 @@ export default class GoodsList extends Component {
   render() {
 
     const hasMore = this.props.page === 0 || this.props.page < this.props.totalPage;
-
+    
     if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0 && !hasMore) {
       return null;
     }
