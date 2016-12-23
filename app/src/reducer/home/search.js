@@ -21,7 +21,7 @@ function search(state = {
             action.response.result.Data = [
                 {
                     Id: '1',
-                    ShopName: '清风1111',
+                    ShopName: '清风',
                     HeadImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic1.jpg',
                     GoodsName: '纸巾',
                     GoodsPrices: '99.00',
@@ -52,7 +52,7 @@ function search(state = {
             ];
             console.log("isrefresh: " + action.refresh);
             console.log("list: " + state.goodsListData.goodsList);
-            console.log("CurrentPageIndex : " +　action.response.result.CurrentPageIndex);
+            console.log("CurrentPageIndex : " + action.response.result.CurrentPageIndex);
             const {AllDataCount, AllPageCount, CurrentPageIndex, Data} = action.response.result;
             const goodsListData = {
                 allSize: AllDataCount,

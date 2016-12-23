@@ -42,8 +42,8 @@ export default class GoodsItem extends Component {
 
         return (
             <li className="goods-item">
-                <Goods Position='left' {...goodsInfo1}/>
-                <Goods Position='right' {...goodsInfo2}/>
+                <Goods {...goodsInfo1}/>
+                <Goods {...goodsInfo2}/>
             </li>
         )
     }
