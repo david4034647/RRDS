@@ -34,7 +34,8 @@ function rrdd(state = {
     }
     case HOME_RRDD_SUCCESS: {
       console.log(action.response.result.CurrentPageIndex);
-      action.response.result.AllPageCount = 20;
+      action.response.result.AllPageCount = 10;
+      //action.response.result.AllDataCount = 30;
       console.log('HOME_RRDD_SUCCESS');
       action.response.result.Data = [
         {
@@ -48,33 +49,33 @@ function rrdd(state = {
           BuyNum: 377,
           TotalNum: 800,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
+          GoodsDetailURL: 'http://www.sina.com'
         },
         {
           Id: '2',
           GoodsName: '2Title of the Article',
           GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic2.jpg',
           CreatTime: '2 hours ago',
-          Price: 100,
-          OriginalPrice: 200,
+          Price: 76,
+          OriginalPrice: 120,
           ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
+          BuyNum: 477,
+          TotalNum: 1000,
           CommentsNum: 34,
           GoodsDetailURL: 'http://www.baidu.com'
         },
         {
           Id: '3',
-          GoodsName: '3Title of the Article',
+          GoodsName: '33333Title of the Article',
           GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic3.jpg',
           CreatTime: '3 hours ago',
-          Price: 100,
-          OriginalPrice: 200,
+          Price: 10,
+          OriginalPrice: 10,
           ActivityType: 1,
           BuyNum: 377,
           TotalNum: 800,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
+          GoodsDetailURL: 'http://www.dodoca.com'
         }
 
 

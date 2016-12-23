@@ -49,6 +49,11 @@ export default class GoodsBargainItem extends Component {
 		}
 	}
 
+	handleClick() {
+	    console.log("click " + this.props.GoodsDetailURL);
+	    window.location.href = this.props.GoodsDetailURL;
+	  }
+
 	render() {
 		const price = this.formatCurrency(this.props.Price);
 		const integerOfPrice = this.integerOfNum(price);
@@ -56,7 +61,10 @@ export default class GoodsBargainItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
 
 		return (
-			<li className="goods-item">
+			<li className="goods-item" onClick={() => {
+            this.handleClick();
+
+          	}} >
 		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
 
 		        <div className="goods-context">

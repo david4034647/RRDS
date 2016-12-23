@@ -40,7 +40,7 @@ export default class GoodsList extends Component {
   render() {
 
     const hasMore = this.props.page === 0 || this.props.page < this.props.totalPage;
-
+    
     if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0 && !hasMore) {
       return null;
     }

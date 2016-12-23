@@ -22,10 +22,13 @@ export default class AuthorItem extends Component {
     MarkList: PropTypes.array
   }
 
+  handleClick(e) {
+    console.log("click ");
+  }
 
   render() {
     return (
-      <li className="author-item">
+      <li className="author-item" onClick={this.handleClick(e)}>
         <div className="author-avatar" style={{backgroundImage: `url('${this.props.HeadImg}'`}}/>
         <div className="author-name">{this.props.NickName}</div>
         <div className="author-info">{this.props.LikeNum || 0} Articles - {this.props.LikeNum || 0} Likes</div>
