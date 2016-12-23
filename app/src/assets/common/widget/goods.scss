@@ -1,0 +1,54 @@
+.goods {
+  position: relative;
+  width: 48%;
+  margin: 1%;
+  background-color: white;
+}
+
+.goods-pic {
+  height: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  background-size: 100% 100%;
+}
+
+.goods-name {
+  font-size: 18px;
+  color: #333;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.goods-price {
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+  padding-left: 6px;
+
+  .send-type {
+    background-color: red;
+    font-weight: normal;
+    color: white;
+    font-size: 0.08rem;
+    padding: 2px 8px 2px 8px;
+    margin-left: 20px;
+    border-radius: 5px;
+  }
+
+  .money-sign {
+    font-size: 8px;
+  }
+}
+
+.pay-count {
+  padding-bottom: 20px;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 8px;
+  color: #666;
+
+  .user_count {
+    font-size: 16px;
+    padding-right: 30px;
+  }
+}

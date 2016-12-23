@@ -2,3 +2,25 @@
 @import "../../common/widget/base";
 @import "../../common/widget/baseloading";
 
+.am-search.am-search-start .am-search-input {
+  margin-right: 0;
+}
+
+.am-search .am-search-cancel {
+  display: none;
+}
+
+.am-search {
+  background-color: white;
+}
+
+.am-search .am-search-input input[type="search"] {
+  background-color: #F5F5F5;
+  border: solid 1px #CCCCCC;
+}
+
+::-webkit-input-placeholder {
+  color: red;
+}
+
+

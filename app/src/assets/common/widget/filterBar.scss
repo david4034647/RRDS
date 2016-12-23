@@ -1,0 +1,66 @@
+div.am-popup-mask {
+  top: 166px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.am-popup-body {
+  position: fixed;
+  top: 166px;
+  width: 100%;
+}
+
+.am-search {
+  background-color: #EEEEEE;
+}
+
+div.screening {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  line-height: 0.8rem;
+  z-index: 4;
+
+  .horizontal-divider {
+    height: 1px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-bottom: solid 1px #d3d3d3;
+    overflow: hidden;
+
+    li {
+      float: left;
+      width: 25%;
+      text-align: center;
+      font-weight: normal;
+      font-size: 28px;
+      max-lines: 2;
+      .divider {
+        position: relative;
+        width: 2px;
+        height: 0.4rem;
+        top: 0.2rem;
+        float: right;
+        border: none;
+        border-left: 1px solid #EEEEEE;
+      }
+    }
+  }
+}
+
+.am-list-content {
+  font-size: 28px !important;
+  font-weight: normal;
+  color: #666666 !important;
+}
+
+
+
