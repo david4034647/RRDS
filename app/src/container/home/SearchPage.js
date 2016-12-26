@@ -45,7 +45,6 @@ class SearchPage extends Component {
 
 function mapStateToProps(state) {
     const {error, isFetching, goodsListData} = state.page;
-    console.log("goodsListData: ");
     const goodsList = goodsListData.goodsList;
     return {goodsList, error, isFetching, goodsListData};
 }
