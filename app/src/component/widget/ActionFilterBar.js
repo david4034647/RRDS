@@ -21,6 +21,7 @@ const ActionFilterBar = React.createClass({
         return {
             sel: '',
             selectItem: 1,
+            selectedSubItem: 1,
         };
     },
 
@@ -29,38 +30,34 @@ const ActionFilterBar = React.createClass({
     },
 
     showPopupWindow(){
+        const subItemSelected = this.state.selectedSubItem;
         Popup.show(
             <List>
                 <List.Item
                     onClick={() => {
-                        this.onClose('cancel');
                         this.onSort('综合排序');
-                        this.setState({
-                            selectItem: 1
-                        });
-                    }}
-                >综合排序
-                    <img src={filterItem} className="iconChoose"/>
+                        this.selectSubItem(1);
+                    }}>
+                    <span className={subItemSelected == 1 ? "subItemSelected" : "subItem"}>综合排序</span>
+                    <img src={filterItem} className={subItemSelected == 1 ? "iconChooseSelected" : "iconChoose"}/>
                 </List.Item>
                 <List.Item
                     onClick={() => {
-                        this.onClose('cancel');
-                        this.onSort('评论数从高到低');
-                        this.setState({
-                            selectItem: 1
-                        });
-                    }}
-                >评论数从高到低</List.Item>
+                        this.onSort('评论数从高到低sss');
+                        this.selectSubItem(2);
+                    }}>
+                    <span className={subItemSelected == 2 ? "subItemSelected" : "subItem"}>评论数从高到低</span>
+                    <img src={filterItem} className={subItemSelected == 2 ? "iconChooseSelected" : "iconChoose"}/>
+                </List.Item>
                 <List.Item
                     onClick={() => {
-                        this.onClose('cancel');
                         this.onSort('评论数从低到高');
-                        this.setState({
-                            selectItem: 1
-                        });
-                    }}
-                >评论数从低到高</List.Item>
-            </List>, {animationType: 'slide-down', wrapProps, maskClosable: true}
+                        this.selectSubItem(3);
+                    }}>
+                    <span className={subItemSelected == 3 ? "subItemSelected" : "subItem"}>评论数从低到高</span>
+                    <img src={filterItem} className={subItemSelected == 3 ? "iconChooseSelected" : "iconChoose"}/>
+                </List.Item>
+            </List>, {animationType: 'slide-down', wrapProps, maskClosable: true, onMaskClose: this.onClose}
         );
     },
 
@@ -82,7 +79,7 @@ const ActionFilterBar = React.createClass({
                 });
                 break;
             case 4:
-                Toast.info("筛选11", 1);
+                Toast.info("筛选", 1);
                 this.setState({
                     selectItem: 4
                 });
@@ -90,9 +87,20 @@ const ActionFilterBar = React.createClass({
         }
     },
 
-    onClose(sel) {
-        this.setState({sel});
+    selectSubItem(type){
         Popup.hide();
+        this.setState({
+            selectItem: 1,
+            selectedSubItem: type
+        });
+    },
+
+    onClose() {
+        // const prevItem = this.state.prevSelectItem;
+        // console.log("prevSelectItem: " + prevItem + " SelectItem: " + this.state.selectItem);
+        // this.setState({
+        //     selectItem: prevItem
+        // });
     },
 
     componentDidMount() {
@@ -100,35 +108,35 @@ const ActionFilterBar = React.createClass({
     },
 
     render() {
-        const selectedItems = this.state.selectItem;
+        const selectedItem = this.state.selectItem;
         return (<div className="screening">
             <hr className="horizontal-divider"/>
             <ul>
                 <li className="sort" onClick={() => {
                     this.handleFilterClick(1);
                 }}>
-                    <span className={selectedItems == 1 ? "filter-selected" : ""}>智能排序</span>
-                    <img src={selectedItems == 1 ? arrow2 : arrow3} className="img-arrow"/>
+                    <span className={selectedItem == 1 ? "filter-selected" : ""}>智能排序</span>
+                    <img src={selectedItem == 1 ? arrow2 : arrow3} className="img-arrow"/>
                     <hr className="divider"/>
                 </li>
                 <li className="sales-volume" onClick={() => {
                     this.handleFilterClick(2);
                 }}>
-                    <span className={selectedItems == 2 ? "filter-selected" : ""}>销量</span>
-                    <img src={selectedItems == 2 ? arrow2 : arrow3} className="img-arrow"/>
+                    <span className={selectedItem == 2 ? "filter-selected" : ""}>销量</span>
+                    <img src={selectedItem == 2 ? arrow2 : arrow3} className="img-arrow"/>
                     <hr className="divider"/>
                 </li>
                 <li className="price" onClick={() => {
                     this.handleFilterClick(3);
                 }}>
-                    <span className={selectedItems == 3 ? "filter-selected" : ""}>价格</span>
-                    <img src={selectedItems == 3 ? arrow2 : arrow3} className="img-arrow"/>
+                    <span className={selectedItem == 3 ? "filter-selected" : ""}>价格</span>
+                    <img src={selectedItem == 3 ? arrow2 : arrow3} className="img-arrow"/>
                     <hr className="divider"/>
                 </li>
                 <li className="filter" onClick={() => {
                     this.handleFilterClick(4);
                 }}>
-                    <span className={selectedItems == 4 ? "filter-selected" : ""}>筛选</span>
+                    <span className={selectedItem == 4 ? "filter-selected" : ""}>筛选</span>
                     <img src={filter} className="img-filter"/>
                 </li>
             </ul>
