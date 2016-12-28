@@ -11,7 +11,7 @@ import app from '../app';
   //  console.error('ERROR:', e);
   //  return;
   //}
-  app.listen(3001, '127.0.0.1', ()=>{
+  app.listen(3002, '127.0.0.1', ()=>{
     console.log('server listen');
   });
 })();

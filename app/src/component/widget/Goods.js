@@ -12,13 +12,12 @@ export default class Goods extends Component {
         SendType: PropTypes.string,
         PayCount: PropTypes.number,
         CommontCount: PropTypes.number,
-        Position: PropTypes.string
     };
 
 
     render() {
         return (
-            <div className="goods" style={{'float': this.props.Position}}>
+            <div className="goods">
                 <a href="http://www.baidu.com">
                     <div className="goods-pic" style={{backgroundImage: `url('${this.props.HeadImg}')`}}/>
                     <div className="goods_info">
