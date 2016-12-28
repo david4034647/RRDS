@@ -15,6 +15,7 @@ function callApi({
   customHeaders = {}
 }) {
   const fullUrl = /^https?:\/\//.test(endpoint) ? endpoint : `${API_ROOT}${endpoint}`;
+  console.log("URL[" + fullUrl + "]");
 
   const headers = new Headers();
   if (json) {
@@ -22,6 +23,7 @@ function callApi({
   } else {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
+
   Object.keys(customHeaders).forEach((k) => {
     headers.append(k, customHeaders[k]);
   });
@@ -41,6 +43,7 @@ function callApi({
       method,
       headers,
       body,
+      mode:'no-cors',
       credentials: 'include'
     }).then(response => {
       if (!response.ok) {
@@ -116,6 +119,7 @@ export default store => next => action => {
     json,
     customHeaders
   }).then((response) => {
+    console.log(response);
     next(actionWith({
       response,
       type: successType,
@@ -127,6 +131,7 @@ export default store => next => action => {
       retMsg: ''
     };
   }, ({retCode, retMsg}) => {
+    console.log("retCode:" + retCode);
     next(actionWith({
       type: failureType,
       error: retMsg,

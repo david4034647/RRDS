@@ -40,8 +40,8 @@ export default class SearchList extends Component {
 
     render() {
         const goodsList = this.props.goodsList;
-        console.log("goodsList: " + goodsList);
-        console.log("//////page: " + this.props.page + " totalPage: " + this.props.totalPage);
+        //console.log("goodsList: " + goodsList);
+        //console.log("//////page: " + this.props.page + " totalPage: " + this.props.totalPage);
         const hasMore = this.props.page === 0 || this.props.page < this.props.totalPage;
 
         if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0 && !hasMore) {

@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {Progress} from 'antd-mobile';
+import {Progress, SegmentedControl} from 'antd-mobile';
 
-import '../../../assets/common/widget/goodsBargainItem.scss';
+import '../../../assets/common/widget/goodsGroupBuyItem.scss';
 
-export default class GoodsBargainItem extends Component {
-	static displayName = 'widgetGoodsBargainItem';
+export default class GoodsGroupBuyItem extends Component {
+	static displayName = 'widgetGoodsGroupBuyItem';
 
 	static propTypes = {
 	    CreatTime: PropTypes.string,
@@ -50,7 +50,7 @@ export default class GoodsBargainItem extends Component {
 	}
 
 	handleClick() {
-	    console.log("click " + this.props.GoodsDetailURL);
+	    //console.log("click " + this.props.GoodsDetailURL);
 	    window.location.href = this.props.GoodsDetailURL;
 	  }
 
@@ -61,21 +61,21 @@ export default class GoodsBargainItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
 
 		return (
-			<li className="kanjia-item" onClick={() => {
+			<li className="goods-item" onClick={() => {
             this.handleClick();
 
           	}} >
-		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
+		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
 
-		        <div className="kanjia-context">
-		        	<div className="kanjia-name">{this.props.GoodsName}</div>
+		        <div className="goods-context">
+		        	<div className="goods-name">{this.props.GoodsName}</div>
 
-		        	<div className="kanjia-price">
+		        	<div className="goods-price">
 		        		<div className="bargain-price">团购价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
 		        		<div className="original-price"> 原价{originalPrice}</div>
 		        	</div>
 
-		        	<div className="kanjia-percent">
+		        	<div className="goods-percent">
 		        		<div className="percent-progress"> 
 			        		<Progress percent="80.0" position="normal" unfilled="show" />
 			        		<div className="progress-value">95%</div>
@@ -85,6 +85,10 @@ export default class GoodsBargainItem extends Component {
 
 		        	</div>
 
+		        	<div className="goods-opt">
+		        		<SegmentedControl selectedIndex={1} tintColor={'#f24657'} values={['8人团', '去拼团 >']} style={{height: '28px', width: '90%'}} />
+		        		<div className="opt-mask" />
+		        	</div>
 		        </div>
 		     </li>
 			)

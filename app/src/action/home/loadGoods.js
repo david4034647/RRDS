@@ -22,10 +22,10 @@ function loadList(page, refresh, showLoading) {
 }
 
 export default(refresh = false, showLoading = true) => {
-    console.log("loadGoods ====> load goods list");
+    //console.log("loadGoods ====> load goods list");
     return (dispatch, getState) => {
         const {isFetching} = getState().page;
-        console.log("test: " + isFetching);
+        //console.log("test: " + isFetching);
         const {totalPage = 0} = getState().page && getState().page.goodsListData;
         console.log("=============totalPage : " +　totalPage);
         let {page = 0} = getState().page && getState().page.goodsListData;

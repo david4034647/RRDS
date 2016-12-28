@@ -1,14 +1,53 @@
 import {CALL_API} from '../../middleware/api';
 
-export const HOME_RRDD_BANNER_REQUEST = 'HOME_RRDD_BANNER_REQUEST';
-export const HOME_RRDD_BANNER_SUCCESS = 'HOME_RRDD_BANNER_SUCCESS';
-export const HOME_RRDD_BANNER_FAILURE = 'HOME_RRDD_BANNER_FAILURE';
-export const HOME_RRDD_NAV_REQUEST = 'HOME_RRDD_NAV_REQUEST';
-export const HOME_RRDD_NAV_SUCCESS = 'HOME_RRDD_NAV_SUCCESS';
-export const HOME_RRDD_NAV_FAILURE = 'HOME_RRDD_NAV_FAILURE';
 export const HOME_RRDD_REQUEST = 'HOME_RRDD_REQUEST';
 export const HOME_RRDD_SUCCESS = 'HOME_RRDD_SUCCESS';
 export const HOME_RRDD_FAILURE = 'HOME_RRDD_FAILURE';
+
+export const HOME_RRDD_GOODS_REQUEST = 'HOME_RRDD_GOODS_REQUEST';
+export const HOME_RRDD_GOODS_SUCCESS = 'HOME_RRDD_GOODS_SUCCESS';
+export const HOME_RRDD_GOODS_FAILURE = 'HOME_RRDD_GOODS_FAILURE';
+
+function loadGoodsList(type, params, refresh, showLoading) {
+  return {
+    refresh,
+    [CALL_API]: {
+      types: [HOME_RRDD_GOODS_REQUEST, HOME_RRDD_GOODS_SUCCESS, HOME_RRDD_GOODS_FAILURE],
+      endpoint: 'goodstype',
+      json: true,
+      params: {
+      },
+      showLoading
+    }
+  };
+};
+
+exports.loadGoodsList = (refresh = false, showLoading = true) => {
+  return (dispatch, getState) => {
+    const {isFetching} = getState().page;
+    const {type} = getState().page;
+    const {totalPage = 0} = getState().page && getState().page.articleData;
+    let {page = 0} = getState().page && getState().page.articleData;
+    let {params = {}} = getState().page;
+
+    //console.log("===========");
+    //console.log(getState().page);
+
+    //判断是否刷新
+    if (refresh) {
+      page = 0;
+    }
+
+    //正在获取时 or 当前页数等于总页数时 不再调用。
+    if (isFetching || !refresh && page > 0 && page >= totalPage) {
+      return null;
+    }
+
+    return dispatch(loadGoodsList(type, params, refresh, showLoading));
+  };
+};
+
+
 
 function loadList(page, refresh, showLoading) {
   return {
@@ -31,9 +70,6 @@ exports.loadList = (refresh = false, showLoading = true) => {
     const {isFetching} = getState().page;
     const {totalPage = 0} = getState().page && getState().page.articleData;
     let {page = 0} = getState().page && getState().page.articleData;
-    console.log("====totalPage:" + totalPage);
-    console.log("====page:" + page);
-
 
     //判断是否刷新
     if (refresh) {

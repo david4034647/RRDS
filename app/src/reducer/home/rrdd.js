@@ -1,24 +1,16 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
 import {
-  HOME_RRDD_BANNER_REQUEST,
-  HOME_RRDD_BANNER_SUCCESS,
-  HOME_RRDD_BANNER_FAILURE,
-  HOME_RRDD_NAV_REQUEST,
-  HOME_RRDD_NAV_SUCCESS,
-  HOME_RRDD_NAV_FAILURE,
+  HOME_RRDD_GOODS_REQUEST,
+  HOME_RRDD_GOODS_SUCCESS,
+  HOME_RRDD_GOODS_FAILURE,
+
   HOME_RRDD_REQUEST,
   HOME_RRDD_SUCCESS,
   HOME_RRDD_FAILURE
 } from '../../action/home/loadRRDD';
 
 function rrdd(state = {
-  isBannerFetching: false,
-  loadedBanner: false,
-  bannerList: [],
-  isNavFetching: false,
-  loadedNav: false,
-  navList: [],
   isFetching: false,
   loaded: false,
   articleData: {},
@@ -26,6 +18,23 @@ function rrdd(state = {
 }, action) {
   console.log(action);
   switch (action.type) {
+    case HOME_RRDD_GOODS_REQUEST: {
+      return assign({}, state, {
+        isFetching: true
+      });
+    }
+
+    case HOME_RRDD_GOODS_SUCCESS: {
+      console.log("===========xxxx=============");
+      console.log(action.response.result);
+    }
+
+    case HOME_RRDD_GOODS_FAILURE: {
+      return assign({}, state, {
+        isFetching: false,
+        error: true
+      });
+    }
 
     case HOME_RRDD_REQUEST: {
       return assign({}, state, {
