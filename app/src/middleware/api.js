@@ -42,10 +42,9 @@ function callApi({
     return fetch(fullUrl, {
       method,
       headers,
-      body,
-      mode:'no-cors',
-      credentials: 'include'
+      body
     }).then(response => {
+      console.log(response);
       if (!response.ok) {
         return Promise.reject({
           retCode: response.status,
@@ -55,16 +54,12 @@ function callApi({
 
       return response.json();
     }).then(json => {
-      if (json.Code !== 0) {
+      console.log(json);
+      if (json.retCode) {
         return Promise.reject(json);
       }
 
-      //此处计算接口返回时间,如果接口没有time。需要注释掉
-      // const timeDelta = json.time * 1000 - Date.now();
-      const timeDelta = Date.now();
-
-      //拼接json格式。。添加result节点
-      return assign({}, {result: json.Data}, {timeDelta});
+      return json;
     }).catch((err) => {
       return Promise.reject({
         retCode: err.retCode,
