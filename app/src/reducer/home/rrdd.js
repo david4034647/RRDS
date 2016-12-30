@@ -16,7 +16,7 @@ function rrdd(state = {
   articleData: {},
   error: false
 }, action) {
-  console.log(action);
+  //console.log(action);
   switch (action.type) {
     case HOME_RRDD_GOODS_REQUEST: {
       return assign({}, state, {
@@ -26,7 +26,36 @@ function rrdd(state = {
 
     case HOME_RRDD_GOODS_SUCCESS: {
       console.log("===========xxxx=============");
-      console.log(action.response.result);
+      //console.log(action.response);
+
+      let Data = [];
+      const AllDataCount = action.response.took;
+      const AllPageCount = AllDataCount/10 || 0;
+      const CurrentPageIndex = 1;
+
+      Data = action.response.hits;
+      //console.log(Data.hits);
+      for(let element of Data.hits) {
+        console.log(element);
+      }
+
+
+
+      // const articleData = {
+      //   allSize: AllDataCount,
+      //   totalPage: AllPageCount,
+      //   page: CurrentPageIndex,
+      //   goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
+      // }
+
+      // // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
+      // return assign({}, state, {
+      //   isFetching: false,
+      //   loaded: true,
+      //   error: false,
+      //   articleData
+      // });
+
     }
 
     case HOME_RRDD_GOODS_FAILURE: {
