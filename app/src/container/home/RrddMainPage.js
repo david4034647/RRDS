@@ -17,10 +17,6 @@ class RrddMainPage extends Component {
 
   static propTypes = {
     selNow: PropTypes.number,
-    loadBanner: PropTypes.func,
-    bannerList: PropTypes.array,
-    loadNav: PropTypes.func,
-    navList: PropTypes.array,
     loadGoodsList: PropTypes.func,
     articleData: PropTypes.object,
     isFetching: PropTypes.bool,

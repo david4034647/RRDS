@@ -61,11 +61,12 @@ export default class GoodsBargainItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
 
 		return (
-			<li className="kanjia-item" onClick={() => {
-            this.handleClick();
-
-          	}} >
-		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
+			<li className="kanjia-item">
+		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} onClick={() => {
+            	this.handleClick();
+          	}}>
+		        	<div className="kanjia-stamp"/>
+		        </div>
 
 		        <div className="kanjia-context">
 		        	<div className="kanjia-name">{this.props.GoodsName}</div>
@@ -76,12 +77,16 @@ export default class GoodsBargainItem extends Component {
 		        	</div>
 
 		        	<div className="kanjia-percent">
+		        		<div className="percent-surplus">(剩余1000个)</div>
 		        		<div className="percent-progress"> 
 			        		<Progress percent="80.0" position="normal" unfilled="show" />
 			        		<div className="progress-value">95%</div>
 		        		</div>
-		        		
-		        		<div className="percent-surplus">(剩余1000个)</div>
+		        	</div>
+
+		        	<div className="kanjia-opt">
+		        		<div className="opt-icon" />
+		        		<div className="opt-desc"><span className="opt-num">8877</span>人在砍价</div>
 
 		        	</div>
 

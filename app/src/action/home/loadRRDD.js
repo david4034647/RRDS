@@ -8,14 +8,16 @@ export const HOME_RRDD_GOODS_REQUEST = 'HOME_RRDD_GOODS_REQUEST';
 export const HOME_RRDD_GOODS_SUCCESS = 'HOME_RRDD_GOODS_SUCCESS';
 export const HOME_RRDD_GOODS_FAILURE = 'HOME_RRDD_GOODS_FAILURE';
 
-function loadGoodsList(type, params, refresh, showLoading) {
+function loadGoodsList(page, refresh, showLoading) {
   return {
     refresh,
+    page,
     [CALL_API]: {
       types: [HOME_RRDD_GOODS_REQUEST, HOME_RRDD_GOODS_SUCCESS, HOME_RRDD_GOODS_FAILURE],
       endpoint: 'goodstype',
       json: true,
       params: {
+        PageIndex: page
       },
       showLoading
     }
@@ -24,14 +26,15 @@ function loadGoodsList(type, params, refresh, showLoading) {
 
 exports.loadGoodsList = (refresh = false, showLoading = true) => {
   return (dispatch, getState) => {
+    // const {isFetching} = getState().page;
+    // const {type} = getState().page;
+    // const {totalPage = 0} = getState().page && getState().page.articleData;
+    // let {page = 0} = getState().page && getState().page.articleData;
+    // let {params = {}} = getState().page;
+
     const {isFetching} = getState().page;
-    const {type} = getState().page;
     const {totalPage = 0} = getState().page && getState().page.articleData;
     let {page = 0} = getState().page && getState().page.articleData;
-    let {params = {}} = getState().page;
-
-    //console.log("===========");
-    //console.log(getState().page);
 
     //判断是否刷新
     if (refresh) {
@@ -43,7 +46,7 @@ exports.loadGoodsList = (refresh = false, showLoading = true) => {
       return null;
     }
 
-    return dispatch(loadGoodsList(type, params, refresh, showLoading));
+    return dispatch(loadGoodsList(page + 1, refresh, showLoading));
   };
 };
 

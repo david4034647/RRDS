@@ -15,14 +15,160 @@
 			width: 288px;
 			top: 8px;
 			left: 8px;
+			z-index: 1;
+
+			.kanjia-stamp {
+				position: relative;
+				float: right;
+				right: 8px;
+				height: 60px;
+				width: 60px;
+				//background-color: Yellow;
+				background-size: cover;
+				background: url("../../pages/home/images/icon_baoyou.png")  no-repeat content-box;
+			}
 	}
 
 	.kanjia-context {
 		display: block;
 		position: relative;
-		top: -288px;
-		left: 288px;
+		top: -288+8px;
+		padding-left: 288+8px;
 		overflow: hidden;
+		background-color: Yellow;
+		width: 100%;
+		max-height: 288px;
+		text-align:	center;
+
+		.kanjia-name {
+			display: block;
+			position: relative;
+			top: 8px;
+			margin-left: 45px;
+			margin-right: 60px;
+			font-size: 28px;
+			color: #333333;
+			max-height: 60px;
+			overflow: hidden;
+			text-align: left;
+			//background-color: Blue;
+		}
+
+		.kanjia-price {
+			display: inline-block;
+			position: relative;
+			top: 20px;
+			padding-left: 45px;
+			padding-right: 60px;
+			max-height: 35px;
+			overflow: hidden;
+			//background-color: Blue;
+			width: 100%;
+			text-align: left;
+
+			.bargain-price {
+				display: block;
+				font-size: 24px;
+				line-height: 35px;
+				color: #f14557;
+
+				.integer-price {
+					font-size: 35px;
+				}
+			}
+
+			.original-price {
+				display: block;
+				position: relative;
+				float: right;
+				font-size: 20px;
+				line-height: 35px;
+				top: -35px;
+				max-width: 130px;
+				//overflow: hidden;
+				//margin-left: 40px;
+				text-align: right;
+				text-decoration:line-through;
+				color: #666666;
+				//background-color: Red;
+			}
+
+		}
+
+		.kanjia-percent {
+			display: inline-block;
+			position: relative;
+			margin-top: 30px;
+			max-height: 36px;
+			width: 100%;
+			//background-color: Red;
+			padding-left: 40px;
+			padding-right: 60px;
+
+			.percent-surplus {
+				display: block;
+				position: relative;
+				float: right;
+				line-height: 38px;
+				max-height: 38px;
+				width: 100%;
+				//max-width: 240px;
+				text-align: right;
+				//background-color: Red;
+				//top: -30px;
+				font-size: 20px;
+				overflow: hidden;
+				color: #808080;
+			}
+
+			.percent-progress {
+				display: block;
+				position: relative;
+				float: left;
+				top: -38px;
+				text-align: left;
+				width: 58%;
+				max-height: 30px;
+
+				.am-progress-outer {
+						
+					border: solid #dfdfdf;
+					border-width: 0px;	
+					border-radius: 28px;
+
+					.am-progress-bar {
+						display: inline-block;
+						position: relative;
+						top: 4px;
+						border-radius: 14px;
+						border: 14px solid #f24657;
+					}
+
+				}
+
+				.progress-value {
+					display: inline-block;
+					position: relative;
+					width: 100%;
+					text-align: center;
+					top: -38px;
+					font-size: 20px;
+					color: White;
+				}
+			}
+
+		}
+
+		.kanjia-opt {
+			display: inline-block;
+			position: relative;
+			top: 30px;
+			padding-left: 45px;
+			padding-right: 45px;
+			max-height: 56px;
+			overflow: hidden;
+			background-color: Red;
+		}
 
 	}
 
