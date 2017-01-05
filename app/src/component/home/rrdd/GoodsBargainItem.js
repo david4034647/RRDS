@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Progress} from 'antd-mobile';
+import {Progress, Button} from 'antd-mobile';
 
 import '../../../assets/common/widget/goodsBargainItem.scss';
 
@@ -65,7 +65,7 @@ export default class GoodsBargainItem extends Component {
 		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} onClick={() => {
             	this.handleClick();
           	}}>
-		        	<div className="kanjia-stamp"/>
+		        	<div className="kanjia-stamp" />
 		        </div>
 
 		        <div className="kanjia-context">
@@ -87,7 +87,10 @@ export default class GoodsBargainItem extends Component {
 		        	<div className="kanjia-opt">
 		        		<div className="opt-icon" />
 		        		<div className="opt-desc"><span className="opt-num">8877</span>人在砍价</div>
-
+		        		<Button className="opt-btn" size="small" inline type="primary" onClick={e=> {
+		        			//console.log(e);
+		        			this.handleClick();
+		        		}} >{'去砍价 >'}</Button>
 		        	</div>
 
 		        </div>
