@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {Progress, Button} from 'antd-mobile';
+import {Button} from 'antd-mobile';
+import {Line} from 'rc-progress';
 
 import '../../../assets/common/widget/goodsBargainItem.scss';
 
@@ -79,7 +80,7 @@ export default class GoodsBargainItem extends Component {
 		        	<div className="kanjia-percent">
 		        		<div className="percent-surplus">(剩余1000个)</div>
 		        		<div className="percent-progress"> 
-			        		<Progress percent="80.0" position="normal" unfilled="show" />
+			        		<Line className="progress" percent="65.0" strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
 			        		<div className="progress-value">95%</div>
 		        		</div>
 		        	</div>
