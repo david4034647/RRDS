@@ -1,9 +1,17 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
 import {
-  HOME_RRDD_GOODS_REQUEST,
-  HOME_RRDD_GOODS_SUCCESS,
-  HOME_RRDD_GOODS_FAILURE,
+  HOME_RRDD_BARGAIN_REQUEST,
+  HOME_RRDD_BARGAIN_SUCCESS,
+  HOME_RRDD_BARGAIN_FAILURE,
+
+  HOME_RRDD_PINTUAN_REQUEST,
+  HOME_RRDD_PINTUAN_SUCCESS,
+  HOME_RRDD_PINTUAN_FAILURE,
+
+  HOME_RRDD_SECKILL_REQUEST,
+  HOME_RRDD_SECKILL_SUCCESS,
+  HOME_RRDD_SECKILL_FAILURE,
 
   HOME_RRDD_REQUEST,
   HOME_RRDD_SUCCESS,
@@ -18,13 +26,13 @@ function rrdd(state = {
 }, action) {
   //console.log(action);
   switch (action.type) {
-    case HOME_RRDD_GOODS_REQUEST: {
+    case HOME_RRDD_BARGAIN_REQUEST: {
       return assign({}, state, {
         isFetching: true
       });
     }
 
-    case HOME_RRDD_GOODS_SUCCESS: {
+    case HOME_RRDD_BARGAIN_SUCCESS: {
       console.log("===========xxxx=============");
       //console.log(action.response);
 
@@ -127,7 +135,7 @@ function rrdd(state = {
 
     }
 
-    case HOME_RRDD_GOODS_FAILURE: {
+    case HOME_RRDD_BARGAIN_FAILURE: {
       return assign({}, state, {
         isFetching: false,
         error: true
