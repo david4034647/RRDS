@@ -5,8 +5,10 @@ import '../../assets/common/widget/filterBar.scss';
 import arrow1 from '../../assets/common/widget/images/arrow_down_black.png';
 import arrow2 from '../../assets/common/widget/images/arrow_down_red.png';
 import arrow3 from '../../assets/common/widget/images/arrow_up_black.png';
+import arrow4 from '../../assets/common/widget/images/arrow_up_red.png';
 import filter from '../../assets/common/widget/images/icon_filter.png';
 import filterItem from '../../assets/common/widget/images/icon_filter_item.png';
+
 import {findDOMNode} from 'react-dom';
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -15,8 +17,9 @@ if (isIPhone) {
     wrapProps = {};
 }
 
-const ActionFilterBar = React.createClass({
+const popup = Popup.newInstance();
 
+const ActionFilterBar = React.createClass({
     getInitialState() {
         return {
             sel: '',
@@ -31,7 +34,7 @@ const ActionFilterBar = React.createClass({
 
     showPopupWindow(){
         const subItemSelected = this.state.selectedSubItem;
-        Popup.show(
+        popup.show(
             <List>
                 <List.Item
                     onClick={() => {
@@ -43,7 +46,7 @@ const ActionFilterBar = React.createClass({
                 </List.Item>
                 <List.Item
                     onClick={() => {
-                        this.onSort('评论数从高到低sss');
+                        this.onSort('评论数从高到低');
                         this.selectSubItem(2);
                     }}>
                     <span className={subItemSelected == 2 ? "subItemSelected" : "subItem"}>评论数从高到低</span>
@@ -88,7 +91,7 @@ const ActionFilterBar = React.createClass({
     },
 
     selectSubItem(type){
-        Popup.hide();
+        popup.hide();
         this.setState({
             selectItem: 1,
             selectedSubItem: type
@@ -101,6 +104,10 @@ const ActionFilterBar = React.createClass({
         // this.setState({
         //     selectItem: prevItem
         // });
+    },
+
+    componentDidUpdate(prevProps, prevState){
+        console.log("componentDidUpdate");
     },
 
     componentDidMount() {
