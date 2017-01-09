@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {Progress, SegmentedControl} from 'antd-mobile';
+import {SegmentedControl} from 'antd-mobile';
+import {Line} from 'rc-progress';
 
 import '../../../assets/common/widget/goodsGroupBuyItem.scss';
 
@@ -65,28 +66,28 @@ export default class GoodsGroupBuyItem extends Component {
             this.handleClick();
 
           	}} >
-		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
+		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}>
+		        	<div className="goods-stamp" />
+		        </div>
 
 		        <div className="goods-context">
 		        	<div className="goods-name">{this.props.GoodsName}</div>
 
 		        	<div className="goods-price">
 		        		<div className="bargain-price">团购价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
-		        		<div className="original-price"> 原价{originalPrice}</div>
+		        		<div className="original-price">原价{originalPrice}</div>
 		        	</div>
 
 		        	<div className="goods-percent">
+		        		<div className="percent-surplus">(剩余1000个)</div>
 		        		<div className="percent-progress"> 
-			        		<Progress percent="80.0" position="normal" unfilled="show" />
+			        		<Line className="progress" percent="65.0" strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
 			        		<div className="progress-value">95%</div>
 		        		</div>
-		        		
-		        		<div className="percent-surplus">(剩余1000个)</div>
-
 		        	</div>
 
 		        	<div className="goods-opt">
-		        		<SegmentedControl selectedIndex={1} tintColor={'#f24657'} values={['8人团', '去拼团 >']} style={{height: '28px', width: '90%'}} />
+		        		<SegmentedControl selectedIndex={1} tintColor={'#f24657'} values={['8人团', '去拼团 >']} style={{height: '28px'}} />
 		        		<div className="opt-mask" />
 		        	</div>
 		        </div>

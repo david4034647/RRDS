@@ -33,7 +33,6 @@ export default class GoodsList extends Component {
     } else {
       return <GoodsGroupBuyItem {...item} key={key} />;
     };
-    
   };
 
   renderItems = (items, props) => {

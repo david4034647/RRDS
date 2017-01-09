@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {Progress} from 'antd-mobile';
+import {Button} from 'antd-mobile';
+import {Line} from 'rc-progress';
 
 import '../../../assets/common/widget/goodsBargainItem.scss';
 
@@ -61,11 +62,12 @@ export default class GoodsBargainItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
 
 		return (
-			<li className="kanjia-item" onClick={() => {
-            this.handleClick();
-
-          	}} >
-		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} />
+			<li className="kanjia-item">
+		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} onClick={() => {
+            	this.handleClick();
+          	}}>
+		        	<div className="kanjia-stamp" />
+		        </div>
 
 		        <div className="kanjia-context">
 		        	<div className="kanjia-name">{this.props.GoodsName}</div>
@@ -76,13 +78,20 @@ export default class GoodsBargainItem extends Component {
 		        	</div>
 
 		        	<div className="kanjia-percent">
+		        		<div className="percent-surplus">(剩余1000个)</div>
 		        		<div className="percent-progress"> 
-			        		<Progress percent="80.0" position="normal" unfilled="show" />
+			        		<Line className="progress" percent="65.0" strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
 			        		<div className="progress-value">95%</div>
 		        		</div>
-		        		
-		        		<div className="percent-surplus">(剩余1000个)</div>
+		        	</div>
 
+		        	<div className="kanjia-opt">
+		        		<div className="opt-icon" />
+		        		<div className="opt-desc"><span className="opt-num">8877</span>人在砍价</div>
+		        		<Button className="opt-btn" size="small" inline type="primary" onClick={e=> {
+		        			//console.log(e);
+		        			this.handleClick();
+		        		}} >{'去砍价 >'}</Button>
 		        	</div>
 
 		        </div>

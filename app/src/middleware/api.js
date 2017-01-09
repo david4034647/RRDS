@@ -54,13 +54,14 @@ function callApi({
 
       return response.json();
     }).then(json => {
-      console.log(json);
+      console.log("json:" + json);
       if (json.retCode) {
         return Promise.reject(json);
       }
 
       return json;
     }).catch((err) => {
+      console.log("err:" + err);
       return Promise.reject({
         retCode: err.retCode,
         retMsg: err.retMsg
