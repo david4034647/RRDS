@@ -80,7 +80,9 @@ function rrdd(state = {
           BuyNum: 377,
           TotalNum: 800,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.sina.com'
+          GoodsDetailURL: 'http://www.sina.com',
+          BargainNum: 999,
+          IsBaoyou:  1
         },
         {
           Id: '2',
@@ -93,7 +95,9 @@ function rrdd(state = {
           BuyNum: 477,
           TotalNum: 1000,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
+          GoodsDetailURL: 'http://www.baidu.com',
+          BargainNum: 999,
+          IsBaoyou:  1
         },
         {
           Id: '3',
@@ -106,7 +110,9 @@ function rrdd(state = {
           BuyNum: 377,
           TotalNum: 800,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.dodoca.com'
+          GoodsDetailURL: 'http://www.dodoca.com',
+          BargainNum: 444,
+          IsBaoyou:  0
         }
 
 

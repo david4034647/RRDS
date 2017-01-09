@@ -136,13 +136,26 @@
 				margin-right: 3px;
 
 				.progress-value {
-					display: inline-block;
-					position: relative;
+					display: block;
+					position: absolute;
+					float: left;
 					width: 100%;
+					max-width: 320px;
 					text-align: center;
-					top: -35px;
+					top: 0px;
 					font-size: 20px;
 					color: White;
+					line-height: 30px;
+					//background-color: Blue;
+				}
+
+				.progress {
+					float: left;
+					width: 100%;
+					max-width: 320px;
+					line-height: 30px;
+					height: 30px;
+					max-height: 30px;
 				}
 			}
 
