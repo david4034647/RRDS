@@ -8,29 +8,26 @@ export const HOME_RRDD_BARGAIN_REQUEST = 'HOME_RRDD_BARGAIN_REQUEST';
 export const HOME_RRDD_BARGAIN_SUCCESS = 'HOME_RRDD_BARGAIN_SUCCESS';
 export const HOME_RRDD_BARGAIN_FAILURE = 'HOME_RRDD_BARGAIN_FAILURE';
 
-function loadGoodsList(page, refresh, showLoading) {
+function loadGoodsList(id, from, size, refresh, showLoading) {
   return {
     refresh,
-    page,
+    from,
     [CALL_API]: {
       types: [HOME_RRDD_BARGAIN_REQUEST, HOME_RRDD_BARGAIN_SUCCESS, HOME_RRDD_BARGAIN_FAILURE],
       endpoint: 'goodstype',
-      json: true,
+      json: false,
       params: {
-        PageIndex: page
+        id: id,
+        from: from,
+        size: 10
       },
       showLoading
     }
   };
 };
 
-exports.loadGoodsList = (refresh = false, showLoading = true) => {
+exports.loadGoodsList = (refresh = false, showLoading = true, type = 1, id = 1, size = 10 ) => {
   return (dispatch, getState) => {
-    // const {isFetching} = getState().page;
-    // const {type} = getState().page;
-    // const {totalPage = 0} = getState().page && getState().page.articleData;
-    // let {page = 0} = getState().page && getState().page.articleData;
-    // let {params = {}} = getState().page;
 
     const {isFetching} = getState().page;
     const {totalPage = 0} = getState().page && getState().page.articleData;
@@ -42,11 +39,11 @@ exports.loadGoodsList = (refresh = false, showLoading = true) => {
     }
 
     //正在获取时 or 当前页数等于总页数时 不再调用。
-    if (isFetching || !refresh && page > 0 && page >= totalPage) {
-      return null;
-    }
-
-    return dispatch(loadGoodsList(page + 1, refresh, showLoading));
+    // if (isFetching || !refresh) {
+    //   return null;
+    // }
+    console.log("======= from:" + page);
+    return dispatch(loadGoodsList(id, Number(page)+Number(size), size, refresh, showLoading));
   };
 };
 

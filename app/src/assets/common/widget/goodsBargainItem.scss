@@ -11,6 +11,7 @@
 			display: block;
 			background-size: auto;
 			position: relative;
+			background-size: cover;
 			height: 288px;
 			width: 288px;
 			top: 8px;
@@ -93,7 +94,7 @@
 				overflow: hidden;
 				//margin-left: 40px;
 				text-align: left;
-				text-decoration:line-through;
+				//text-decoration:line-through;
 				color: #666666;
 				//background-color: Red;
 			}

@@ -15,7 +15,10 @@ export default class GoodsList extends Component {
     totalPage: PropTypes.number,
     isFetching: PropTypes.bool,
     error: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    id: PropTypes.string,
+    from: PropTypes.string,
+    size: PropTypes.string
   }
 
   constructor(props) {
@@ -24,15 +27,17 @@ export default class GoodsList extends Component {
 
   //加载更多
   loadMore = () => {
-    this.props.loadList(false, false);
+    this.props.loadList(false, false, this.props.type, this.props.id, this.props.size);
   }
 
   renderItem = (item, key) => {
     if (this.props.type === '1') {
       return <GoodsBargainItem {...item} key={key} />;
+    } else if (this.props.type === '2') {
+      return <GoodsGroupBuyItem {...item} key={key} />;
     } else {
       return <GoodsGroupBuyItem {...item} key={key} />;
-    };
+    }
   };
 
   renderItems = (items, props) => {
@@ -44,9 +49,9 @@ export default class GoodsList extends Component {
 
   render() {
 
-    const hasMore = this.props.page === 0 || this.props.page < this.props.totalPage;
+    const hasMore = true;
 
-    if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0 && !hasMore) {
+    if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0) {
       return null;
     }
 

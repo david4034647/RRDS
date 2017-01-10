@@ -85,7 +85,7 @@ export default class GoodsBargainItem extends Component {
 		        	<div className="kanjia-name">{this.props.GoodsName}</div>
 
 		        	<div className="kanjia-price">
-		        		<div className="bargain-price">团购价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
+		        		<div className="bargain-price">底价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
 		        		<div className="original-price"> 原价{originalPrice}</div>
 		        	</div>
 
