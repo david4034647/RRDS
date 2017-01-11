@@ -1,13 +1,13 @@
 import {Popup, List, Button, Toast} from 'antd-mobile';
 import {getPopupDomNode} from 'antd-mobile';
 import React, {Component, PropTypes} from 'react';
-import '../../assets/common/widget/filterBar.scss';
-import arrow1 from '../../assets/common/widget/images/arrow_down_black.png';
-import arrow2 from '../../assets/common/widget/images/arrow_down_red.png';
-import arrow3 from '../../assets/common/widget/images/arrow_up_black.png';
-import arrow4 from '../../assets/common/widget/images/arrow_up_red.png';
-import filter from '../../assets/common/widget/images/icon_filter.png';
-import filterItem from '../../assets/common/widget/images/icon_filter_item.png';
+import '../../../assets/common/widget/filterBar.scss';
+import arrow1 from '../../../assets/common/widget/images/arrow_down_black.png';
+import arrow2 from '../../../assets/common/widget/images/arrow_down_red.png';
+import arrow3 from '../../../assets/common/widget/images/arrow_up_black.png';
+import arrow4 from '../../../assets/common/widget/images/arrow_up_red.png';
+import filter from '../../../assets/common/widget/images/icon_filter.png';
+import filterItem from '../../../assets/common/widget/images/icon_filter_item.png';
 
 import {findDOMNode} from 'react-dom';
 
@@ -19,20 +19,36 @@ if (isIPhone) {
 
 const popup = Popup.newInstance();
 
-const ActionFilterBar = React.createClass({
-    getInitialState() {
-        return {
+export default  class ActionFilterBar extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
             sel: '',
             selectItem: 1,
             selectedSubItem: 1,
         };
-    },
+    }
+
+    static propTypes = {
+        onFilterClick: PropTypes.func,
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate");
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
+
 
     onSort(type) {
         Toast.info(type, 1);
-    },
+    }
 
-    showPopupWindow(){
+    showPopupWindow() {
         const subItemSelected = this.state.selectedSubItem;
         popup.show(
             <List>
@@ -62,7 +78,7 @@ const ActionFilterBar = React.createClass({
                 </List.Item>
             </List>, {animationType: 'slide-down', wrapProps, maskClosable: true, onMaskClose: this.onClose}
         );
-    },
+    }
 
     handleFilterClick(type) {
         switch (type) {
@@ -88,15 +104,15 @@ const ActionFilterBar = React.createClass({
                 });
                 break;
         }
-    },
+    }
 
-    selectSubItem(type){
+    selectSubItem(type) {
         popup.hide();
         this.setState({
             selectItem: 1,
             selectedSubItem: type
         });
-    },
+    }
 
     onClose() {
         // const prevItem = this.state.prevSelectItem;
@@ -104,15 +120,7 @@ const ActionFilterBar = React.createClass({
         // this.setState({
         //     selectItem: prevItem
         // });
-    },
-
-    componentDidUpdate(prevProps, prevState){
-        console.log("componentDidUpdate");
-    },
-
-    componentDidMount() {
-        console.log("componentDidMount");
-    },
+    }
 
     render() {
         const selectedItem = this.state.selectItem;
@@ -140,15 +148,16 @@ const ActionFilterBar = React.createClass({
                     <img src={selectedItem == 3 ? arrow2 : arrow3} className="img-arrow"/>
                     <hr className="divider"/>
                 </li>
-                <li className="filter" onClick={() => {
-                    this.handleFilterClick(4);
-                }}>
+                <li className="filter" onClick={
+                    this.props.onFilterClick
+                    // () => {
+                    //this.handleFilterClick(4);
+                    //}
+                }>
                     <span className={selectedItem == 4 ? "filter-selected" : ""}>筛选</span>
                     <img src={filter} className="img-filter"/>
                 </li>
             </ul>
-        </div>);
-    },
-});
-
-export default ActionFilterBar;
+        </div>)
+    }
+}

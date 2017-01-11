@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import '../../assets/common/widget/goods.scss';
+import '../../../assets/common/widget/goods.scss';
 
 
 export default class Goods extends Component {

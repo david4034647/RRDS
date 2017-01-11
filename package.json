@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "accounting": "^0.4.1",
-    "antd-mobile": "^0.8.5",
+    "antd-mobile": "^0.8.7",
     "babel": "6.0.12",
     "babel-plugin-antd": "^0.5.1",
     "classnames": "^2.2.3",

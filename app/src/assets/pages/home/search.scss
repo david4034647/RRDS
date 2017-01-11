@@ -23,4 +23,21 @@
   color: red;
 }
 
+.my-drawer {
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  z-index: 1;
+}
+
+.my-drawer .am-drawer-sidebar {
+  width: 80%;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.my-drawer .am-drawer-sidebar .am-list {
+  padding: 0;
+}
+
 

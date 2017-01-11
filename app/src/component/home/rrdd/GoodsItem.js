@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import isEmpty from 'lodash/isEmpty';
 
 import '../../../assets/common/widget/goodsItem.scss';
-import Goods from '../Goods';
+import Goods from '../rrdd/Goods';
 
 
 export default class GoodsItem extends Component {
