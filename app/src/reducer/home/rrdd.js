@@ -1,7 +1,5 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
-import chunk from "lodash/chunk";
-
 import {
   HOME_RRDD_BARGAIN_REQUEST,
   HOME_RRDD_BARGAIN_SUCCESS,
@@ -21,7 +19,6 @@ import {
 } from '../../action/home/loadRRDD';
 
 function rrdd(state = {
-
   isFetching: false,
   loaded: false,
   articleData: {},
@@ -36,33 +33,47 @@ function rrdd(state = {
     }
 
     case HOME_RRDD_BARGAIN_SUCCESS: {
-      console.log("===========xxxx=============");
-      console.log(state.articleData);
-      console.log(action.response);
+      // console.log("===========xxxx=============");
+      // console.log(state.articleData);
+      // console.log(action.response);
 
       let Data = [];
       for(let element of action.response.hits.hits) {
-        console.log(element);
+        //console.log(element);
+
+        const isBaoyou = (element._source.goods_postage===0?0:1);
+        const {PintuanPrice, PintuanMember} = parsePintuanItem(element._source.pintuan_item);
+
         Data.push({
           Id: element._id,
-          BuyNum: element._source.goods_stock,
-          CommentsNum: 34,
-          Seckill_GoodsName: element._source.goods_name,
-          Seckill_GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
-          Seckill_Price: element._source.goods_price,
-          Seckill_OriginalPrice: element._source.goods_original_price,
-          Seckill_TotalNum: element._source.bargain_stock,
-          Seckill_GoodsDetailURL: 'https://shop' + element._source.shop_id + '.wxrrd.com/goods/' + element._id,
-          Seckill_BargainNum: 999,
-          Seckill_IsBaoyou:  1
+          GoodsName: element._source.goods_name,
+          GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
+          CreatTime: '2 hours ago',
+          GoodsDetailURL: element._source.goods_url,
+          ActivityType: 1,
+          IsBaoyou:  isBaoyou,
+
+          Bargain_Price: element._source.bargain_min_price,
+          Bargain_OriginalPrice: element._source.bargain_original_price,
+          Bargain_BuyNum: element._source.bargain_csale,
+          Bargain_StockNum: element._source.bargain_stock,          
+          Bargain_CountNum: element._source.bargain_join_members,
+          
+          Pintuan_Price:  PintuanPrice,
+          Pintuan_OriginalPrice:  element._source.goods_price,
+          Pintuan_Stock:  element._source.pintuan_stock,
+          Pintuan_Csale:  element._source.goods_csale,
+          Pintuan_Member: PintuanMember
         });
+
       }
 
-      let finalData = chunk(Data, 2);
+      let {from = 0} = state.articleData;
+      from = Number(from) + Data.length;
 
-      console.log(finalData)
       const articleData = {
-        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(finalData || [])]
+        from: from,
+        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
       }
 
       // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
@@ -81,87 +92,7 @@ function rrdd(state = {
         error: true
       });
     }
-
-    case HOME_RRDD_REQUEST: {
-      return assign({}, state, {
-        isFetching: true
-      });
-    }
-    case HOME_RRDD_SUCCESS: {
-      console.log(action.response.result.CurrentPageIndex);
-      action.response.result.AllPageCount = 10;
-      //action.response.result.AllDataCount = 30;
-      console.log('HOME_RRDD_SUCCESS');
-      action.response.result.Data = [
-        {
-          Id: '1',
-          GoodsName: '1Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic1.jpg',
-          CreatTime: '2 hours ago',
-          Price: 100,
-          OriginalPrice: 200,
-          ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.sina.com'
-        },
-        {
-          Id: '2',
-          GoodsName: '2Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic2.jpg',
-          CreatTime: '2 hours ago',
-          Price: 76,
-          OriginalPrice: 120,
-          ActivityType: 1,
-          BuyNum: 477,
-          TotalNum: 1000,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
-        },
-        {
-          Id: '3',
-          GoodsName: '33333Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic3.jpg',
-          CreatTime: '3 hours ago',
-          Price: 10,
-          OriginalPrice: 10,
-          ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.dodoca.com'
-        }
-
-
-      ]
-      // console.log(state);
-
-
-      const {AllDataCount, AllPageCount, CurrentPageIndex, Data } = action.response.result;
-      const articleData = {
-        allSize: AllDataCount,
-        totalPage: AllPageCount,
-        page: CurrentPageIndex,
-        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
-      }
-
-      // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
-      return assign({}, state, {
-        isFetching: false,
-        loaded: true,
-        error: false,
-        articleData
-      });
-    }
-
-    case HOME_RRDD_FAILURE: {
-      return assign({}, state, {
-        isFetching: false,
-        error: true
-      });
-    }
-
+    
     default: {
       return state;
     }
@@ -169,3 +100,22 @@ function rrdd(state = {
 }
 
 export default getReducer(rrdd);
+
+
+/////////////// Customize Method ////////////////
+function parsePintuanItem(items) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return;
+  };
+
+  let price = items[0].pintuan_item_price;
+  let member = items[0].pintuan_item_member;
+  for(let item of items) {
+    if (item.pintuan_item_price < price) {
+      price = item.pintuan_item_price;
+      member = item.pintuan_item_member;
+    } 
+  }
+
+  return {PintuanPrice: price, PintuanMember: member};
+}

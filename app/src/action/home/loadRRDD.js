@@ -30,20 +30,15 @@ exports.loadGoodsList = (refresh = false, showLoading = true, type = 1, id = 1, 
   return (dispatch, getState) => {
 
     const {isFetching} = getState().page;
-    const {totalPage = 0} = getState().page && getState().page.articleData;
-    let {page = 0} = getState().page && getState().page.articleData;
+    let {from = 0} = getState().page && getState().page.articleData;
 
     //判断是否刷新
     if (refresh) {
-      page = 0;
+      from = 0;
     }
 
-    //正在获取时 or 当前页数等于总页数时 不再调用。
-    // if (isFetching || !refresh) {
-    //   return null;
-    // }
-    console.log("======= from:" + page);
-    return dispatch(loadGoodsList(id, Number(page)+Number(size), size, refresh, showLoading));
+    console.log("======= from:" + from);
+    return dispatch(loadGoodsList(id, from, size, refresh, showLoading));
   };
 };
 

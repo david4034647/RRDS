@@ -11,14 +11,15 @@ export default class GoodsGroupBuyItem extends Component {
 	    CreatTime: PropTypes.string,
 	    GoodsImg: PropTypes.string,
 	    Id: PropTypes.string,
-	    Price: PropTypes.number,
-	    OriginalPrice: PropTypes.number,
 	    GoodsName: PropTypes.string,
 	    ActivityType: PropTypes.number,
-	    BuyNum: PropTypes.number,
-	    TotalNum: PropTypes.number,
-	    CommentsNum: PropTypes.number,
-	    GoodsDetailURL: PropTypes.string
+	    GoodsDetailURL: PropTypes.string,
+
+		Pintuan_Price: PropTypes.number,
+	    Pintuan_OriginalPrice: PropTypes.number,
+	    Pintuan_Stock:  PropTypes.number,
+        Pintuan_Csale:  PropTypes.number,
+        Pintuan_Member: PropTypes.number
 	  }
 
 	formatCurrency(num) {
@@ -50,24 +51,36 @@ export default class GoodsGroupBuyItem extends Component {
 		}
 	}
 
+	showStamp(isBaoyou) {
+		if (isBaoyou === 1) {
+			return "block";
+		} else {
+			return "none";
+		}
+	}
+
 	handleClick() {
 	    //console.log("click " + this.props.GoodsDetailURL);
 	    window.location.href = this.props.GoodsDetailURL;
 	  }
 
 	render() {
-		const price = this.formatCurrency(this.props.Price);
+		const price = this.formatCurrency(this.props.Pintuan_Price);
 		const integerOfPrice = this.integerOfNum(price);
 		const gradeOfPrice = this.gradeOfNum(price);
-		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
+		const originalPrice = this.formatCurrency(this.props.Pintuan_OriginalPrice);
+		const member = this.props.Pintuan_Member + "人团";
+		const totalNum = Number(this.props.Pintuan_Csale)+Number(this.props.Pintuan_Stock);
+		const percent = (this.props.Pintuan_Csale*100/totalNum).toFixed(0);
+		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
-			<li className="goods-item" onClick={() => {
+			<li className="goods-item" >
+		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}  onClick={() => {
             this.handleClick();
 
-          	}} >
-		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}>
-		        	<div className="goods-stamp" />
+          	}}>
+		        	<div className="goods-stamp" style={{display: stampStyle}}  />
 		        </div>
 
 		        <div className="goods-context">
@@ -79,16 +92,20 @@ export default class GoodsGroupBuyItem extends Component {
 		        	</div>
 
 		        	<div className="goods-percent">
-		        		<div className="percent-surplus">(剩余1000个)</div>
+		        		<div className="percent-surplus">(剩余{(this.props.Pintuan_Stock) || 0}个)</div>
 		        		<div className="percent-progress"> 
-			        		<Line className="progress" percent="65.0" strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
-			        		<div className="progress-value">95%</div>
+			        		<Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
+			        		<div className="progress-value">{percent || 0}%</div>
+			        		
 		        		</div>
 		        	</div>
 
 		        	<div className="goods-opt">
-		        		<SegmentedControl selectedIndex={1} tintColor={'#f24657'} values={['8人团', '去拼团 >']} style={{height: '28px'}} />
-		        		<div className="opt-mask" />
+		        		<SegmentedControl selectedIndex={1} tintColor={'#f24657'} values={[member, '去拼团 >']} style={{height: '28px'}} />
+		        		<div className="opt-mask" onClick={() => {
+			            this.handleClick();
+
+			          	}}/>
 		        	</div>
 		        </div>
 		     </li>
