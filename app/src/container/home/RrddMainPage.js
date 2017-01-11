@@ -20,7 +20,11 @@ class RrddMainPage extends Component {
     loadGoodsList: PropTypes.func,
     articleData: PropTypes.object,
     isFetching: PropTypes.bool,
-    error: PropTypes.bool
+    error: PropTypes.bool,
+    type: PropTypes.string,
+    id: PropTypes.number,
+    from: PropTypes.number,
+    size: PropTypes.number
   };
 
   static defaultProps = {
@@ -28,15 +32,13 @@ class RrddMainPage extends Component {
   };
 
   componentWillMount() {
-     
+    const type = queryString.parse(location.search).type;
+    const id = queryString.parse(location.search).id;
+    this.props.loadGoodsList(false, true, type, id, 10);
   }
 
-  componentDidMount() {
-    this.props.loadGoodsList();
-  }
-
-  tabsChange() {
-    console.log();
+  componentDidMount() {    
+    
   }
 
   handleClick() {
@@ -48,13 +50,21 @@ class RrddMainPage extends Component {
     const tabBarProps = {
       selNow
     };
+    
     const type = queryString.parse(location.search).type;
+    const id = queryString.parse(location.search).id;
+    const from = queryString.parse(location.search).from;
+    const size = queryString.parse(location.search).size;
+    console.log(type + id + from + size);
 
     // todo 添加具体的内容
     return (
       <div>
       <GoodsList 
         type={type}
+        id={id}
+        from={from}
+        size={size}
         loadList={this.props.loadGoodsList}
         isFetching={this.props.isFetching}
         error={this.props.error}
@@ -67,11 +77,15 @@ class RrddMainPage extends Component {
 
 function mapStateToProps(state) {
   const {
+    type,
+    id,
+    from,
+    size,
     articleData,
     isFetching,
     error
   } = state.page;
-  return {articleData, isFetching, error};
+  return {type, id, from, size, articleData, isFetching, error};
 }
 
 export default connect(mapStateToProps, {

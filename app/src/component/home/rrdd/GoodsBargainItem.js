@@ -18,7 +18,9 @@ export default class GoodsBargainItem extends Component {
 	    BuyNum: PropTypes.number,
 	    TotalNum: PropTypes.number,
 	    CommentsNum: PropTypes.number,
-	    GoodsDetailURL: PropTypes.string
+	    GoodsDetailURL: PropTypes.string,
+	    BargainNum: PropTypes.number,
+	    IsBaoyou: PropTypes.number
 	  }
 
 	formatCurrency(num) {
@@ -50,6 +52,14 @@ export default class GoodsBargainItem extends Component {
 		}
 	}
 
+	showStamp(isBaoyou) {
+		if (isBaoyou === 1) {
+			return "block";
+		} else {
+			return "none";
+		}
+	}
+
 	handleClick() {
 	    console.log("click " + this.props.GoodsDetailURL);
 	    window.location.href = this.props.GoodsDetailURL;
@@ -60,34 +70,37 @@ export default class GoodsBargainItem extends Component {
 		const integerOfPrice = this.integerOfNum(price);
 		const gradeOfPrice = this.gradeOfNum(price);
 		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
+		const percent = ((this.props.BuyNum*100/this.props.TotalNum) || 0).toFixed(0);
+		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
 			<li className="kanjia-item">
 		        <div className="kanjia-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} onClick={() => {
             	this.handleClick();
           	}}>
-		        	<div className="kanjia-stamp" />
+		        	<div className="kanjia-stamp" style={{display: stampStyle}}  />
 		        </div>
 
 		        <div className="kanjia-context">
 		        	<div className="kanjia-name">{this.props.GoodsName}</div>
 
 		        	<div className="kanjia-price">
-		        		<div className="bargain-price">团购价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
+		        		<div className="bargain-price">底价 ¥<span className="integer-price">{integerOfPrice}</span>{gradeOfPrice}</div>
 		        		<div className="original-price"> 原价{originalPrice}</div>
 		        	</div>
 
 		        	<div className="kanjia-percent">
-		        		<div className="percent-surplus">(剩余1000个)</div>
+		        		<div className="percent-surplus">(剩余{(this.props.TotalNum-this.props.BuyNum) || 0}个)</div>
 		        		<div className="percent-progress"> 
-			        		<Line className="progress" percent="65.0" strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
-			        		<div className="progress-value">95%</div>
+			        		<Line className="progress" percent={percent} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
+			        		<div className="progress-value">{percent}%</div>
+			        		
 		        		</div>
 		        	</div>
 
 		        	<div className="kanjia-opt">
 		        		<div className="opt-icon" />
-		        		<div className="opt-desc"><span className="opt-num">8877</span>人在砍价</div>
+		        		<div className="opt-desc"><span className="opt-num">{this.props.BargainNum || 0}</span>人在砍价</div>
 		        		<Button className="opt-btn" size="small" inline type="primary" onClick={e=> {
 		        			//console.log(e);
 		        			this.handleClick();

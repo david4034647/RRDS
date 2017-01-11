@@ -19,6 +19,7 @@ import {
 } from '../../action/home/loadRRDD';
 
 function rrdd(state = {
+
   isFetching: false,
   loaded: false,
   articleData: {},
@@ -34,95 +35,32 @@ function rrdd(state = {
 
     case HOME_RRDD_BARGAIN_SUCCESS: {
       console.log("===========xxxx=============");
-      //console.log(action.response);
+      console.log(state.articleData);
+      console.log(action.response);
 
-      // let Data = [];
-      // const AllDataCount = action.response.took;
-      // const AllPageCount = AllDataCount/10 || 0;
-      // const CurrentPageIndex = 1;
-
-      // Data = action.response.hits;
-      // //console.log(Data.hits);
-      // for(let element of Data.hits) {
-      //   console.log(element);
-      // }
-
-
-
-      // const articleData = {
-      //   allSize: AllDataCount,
-      //   totalPage: AllPageCount,
-      //   page: CurrentPageIndex,
-      //   goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
-      // }
-
-      // // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
-      // return assign({}, state, {
-      //   isFetching: false,
-      //   loaded: true,
-      //   error: false,
-      //   articleData
-      // });
-
-
-
-
-      console.log('HOME_RRDD_SUCCESS');
-      action.response.hits.hits = [
-        {
-          Id: '1',
-          GoodsName: '1Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic1.jpg',
+      let Data = [];
+      for(let element of action.response.hits.hits) {
+        console.log(element);
+        Data.push({
+          Id: element._id,
+          GoodsName: element._source.goods_name,
+          GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
           CreatTime: '2 hours ago',
-          Price: 100,
-          OriginalPrice: 200,
+          Price: element._source.bargain_min_price,
+          OriginalPrice: element._source.bargain_original_price,
           ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
+          BuyNum: element._source.goods_stock,
+          TotalNum: element._source.bargain_stock,
           CommentsNum: 34,
-          GoodsDetailURL: 'http://www.sina.com'
-        },
-        {
-          Id: '2',
-          GoodsName: '2Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic2.jpg',
-          CreatTime: '2 hours ago',
-          Price: 76,
-          OriginalPrice: 120,
-          ActivityType: 1,
-          BuyNum: 477,
-          TotalNum: 1000,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
-        },
-        {
-          Id: '3',
-          GoodsName: '33333Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic3.jpg',
-          CreatTime: '3 hours ago',
-          Price: 10,
-          OriginalPrice: 10,
-          ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.dodoca.com'
-        }
+          GoodsDetailURL: 'https://shop' + element._source.shop_id + '.wxrrd.com/goods/' + element._id,
+          BargainNum: 999,
+          IsBaoyou:  1
+        });
 
+      }
 
-      ]
-      // console.log(state);
-
-      action.response.hits.AllDataCount = 20;
-      action.response.hits.AllPageCount = 3;
-      action.response.hits.CurrentPageIndex = 1;
-
-      const {AllDataCount, AllPageCount, CurrentPageIndex, hits } = action.response.hits;
       const articleData = {
-        allSize: AllDataCount,
-        totalPage: AllPageCount,
-        page: CurrentPageIndex,
-        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(hits || [])]
+        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
       }
 
       // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],

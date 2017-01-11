@@ -11,6 +11,7 @@
 			display: block;
 			background-size: auto;
 			position: relative;
+			background-size: cover;
 			height: 288px;
 			width: 288px;
 			top: 8px;
@@ -93,7 +94,7 @@
 				overflow: hidden;
 				//margin-left: 40px;
 				text-align: left;
-				text-decoration:line-through;
+				//text-decoration:line-through;
 				color: #666666;
 				//background-color: Red;
 			}
@@ -136,13 +137,26 @@
 				margin-right: 3px;
 
 				.progress-value {
-					display: inline-block;
-					position: relative;
+					display: block;
+					position: absolute;
+					float: left;
 					width: 100%;
+					max-width: 320px;
 					text-align: center;
-					top: -35px;
+					top: 0px;
 					font-size: 20px;
 					color: White;
+					line-height: 30px;
+					//background-color: Blue;
+				}
+
+				.progress {
+					float: left;
+					width: 100%;
+					max-width: 320px;
+					line-height: 30px;
+					height: 30px;
+					max-height: 30px;
 				}
 			}
 
