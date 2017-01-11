@@ -31,14 +31,6 @@ class RrddMainPage extends Component {
     selNow: 4
   };
 
-    constructor() {
-        super();
-
-        this.state = {
-            type: 1,
-        };
-    }
-
   componentWillMount() {
     const type = queryString.parse(location.search).type;
     const id = queryString.parse(location.search).id;
@@ -46,9 +38,6 @@ class RrddMainPage extends Component {
   }
 
   componentDidMount() {
-      this.setState({
-          type: 2,
-      });
   }
 
   handleClick() {
