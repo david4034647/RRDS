@@ -11,16 +11,16 @@ export default class GoodsBargainItem extends Component {
 	    CreatTime: PropTypes.string,
 	    GoodsImg: PropTypes.string,
 	    Id: PropTypes.string,
-	    Price: PropTypes.number,
-	    OriginalPrice: PropTypes.number,
+	    GoodsDetailURL: PropTypes.string,
+	    IsBaoyou: PropTypes.number,
 	    GoodsName: PropTypes.string,
 	    ActivityType: PropTypes.number,
-	    BuyNum: PropTypes.number,
-	    TotalNum: PropTypes.number,
-	    CommentsNum: PropTypes.number,
-	    GoodsDetailURL: PropTypes.string,
-	    BargainNum: PropTypes.number,
-	    IsBaoyou: PropTypes.number
+
+	    Bargain_Price: PropTypes.number,
+	    Bargain_OriginalPrice: PropTypes.number,
+	    Bargain_BuyNum: PropTypes.number,
+	    Bargain_StockNum: PropTypes.number,
+	    Bargain_CountNum: PropTypes.number
 	  }
 
 	formatCurrency(num) {
@@ -66,11 +66,12 @@ export default class GoodsBargainItem extends Component {
 	  }
 
 	render() {
-		const price = this.formatCurrency(this.props.Price);
+		const price = this.formatCurrency(this.props.Bargain_Price);
 		const integerOfPrice = this.integerOfNum(price);
 		const gradeOfPrice = this.gradeOfNum(price);
-		const originalPrice = this.formatCurrency(this.props.OriginalPrice);
-		const percent = ((this.props.BuyNum*100/this.props.TotalNum) || 0).toFixed(0);
+		const originalPrice = this.formatCurrency(this.props.Bargain_OriginalPrice);
+		const totalNum = Number(this.props.Bargain_BuyNum)+Number(this.props.Bargain_StockNum);
+		const percent = (this.props.Bargain_BuyNum*100/totalNum).toFixed(0);
 		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
@@ -90,17 +91,17 @@ export default class GoodsBargainItem extends Component {
 		        	</div>
 
 		        	<div className="kanjia-percent">
-		        		<div className="percent-surplus">(剩余{(this.props.TotalNum-this.props.BuyNum) || 0}个)</div>
+		        		<div className="percent-surplus">(剩余{(this.props.Bargain_StockNum) || 0}个)</div>
 		        		<div className="percent-progress"> 
-			        		<Line className="progress" percent={percent} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
-			        		<div className="progress-value">{percent}%</div>
+			        		<Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
+			        		<div className="progress-value">{percent || 0}%</div>
 			        		
 		        		</div>
 		        	</div>
 
 		        	<div className="kanjia-opt">
 		        		<div className="opt-icon" />
-		        		<div className="opt-desc"><span className="opt-num">{this.props.BargainNum || 0}</span>人在砍价</div>
+		        		<div className="opt-desc"><span className="opt-num">{this.props.Bargain_CountNum || 0}</span>人在砍价</div>
 		        		<Button className="opt-btn" size="small" inline type="primary" onClick={e=> {
 		        			//console.log(e);
 		        			this.handleClick();

@@ -41,20 +41,30 @@ function rrdd(state = {
       let Data = [];
       for(let element of action.response.hits.hits) {
         console.log(element);
+
+        const isBaoyou = (element._source.goods_postage===0?0:1);
+        const {PintuanPrice, PintuanMember} = parsePintuanItem(element._source.pintuan_item);
+
         Data.push({
           Id: element._id,
           GoodsName: element._source.goods_name,
           GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
           CreatTime: '2 hours ago',
-          Price: element._source.bargain_min_price,
-          OriginalPrice: element._source.bargain_original_price,
+          GoodsDetailURL: element._source.goods_url,
           ActivityType: 1,
-          BuyNum: element._source.goods_stock,
-          TotalNum: element._source.bargain_stock,
-          CommentsNum: 34,
-          GoodsDetailURL: 'https://shop' + element._source.shop_id + '.wxrrd.com/goods/' + element._id,
-          BargainNum: 999,
-          IsBaoyou:  1
+          IsBaoyou:  isBaoyou,
+
+          Bargain_Price: element._source.bargain_min_price,
+          Bargain_OriginalPrice: element._source.bargain_original_price,
+          Bargain_BuyNum: element._source.bargain_csale,
+          Bargain_StockNum: element._source.bargain_stock,          
+          Bargain_CountNum: element._source.bargain_join_members,
+          
+          Pintuan_Price:  PintuanPrice,
+          Pintuan_OriginalPrice:  element._source.goods_price,
+          Pintuan_Stock:  element._source.pintuan_stock,
+          Pintuan_Csale:  element._source.goods_csale,
+          Pintuan_Member: PintuanMember
         });
 
       }
@@ -167,3 +177,22 @@ function rrdd(state = {
 }
 
 export default getReducer(rrdd);
+
+
+/////////////// Customize Method ////////////////
+function parsePintuanItem(items) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return;
+  };
+
+  let price = items[0].pintuan_item_price;
+  let member = items[0].pintuan_item_member;
+  for(let item of items) {
+    if (item.pintuan_item_price < price) {
+      price = item.pintuan_item_price;
+      member = item.pintuan_item_member;
+    } 
+  }
+
+  return {PintuanPrice: price, PintuanMember: member};
+}
