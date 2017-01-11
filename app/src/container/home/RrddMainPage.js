@@ -31,14 +31,24 @@ class RrddMainPage extends Component {
     selNow: 4
   };
 
+    constructor() {
+        super();
+
+        this.state = {
+            type: 1,
+        };
+    }
+
   componentWillMount() {
     const type = queryString.parse(location.search).type;
     const id = queryString.parse(location.search).id;
     this.props.loadGoodsList(false, true, type, id, 10);
   }
 
-  componentDidMount() {    
-    
+  componentDidMount() {
+      this.setState({
+          type: 2,
+      });
   }
 
   handleClick() {
@@ -50,7 +60,7 @@ class RrddMainPage extends Component {
     const tabBarProps = {
       selNow
     };
-    
+
     const type = queryString.parse(location.search).type;
     const id = queryString.parse(location.search).id;
     const from = queryString.parse(location.search).from;
@@ -60,7 +70,7 @@ class RrddMainPage extends Component {
     // todo 添加具体的内容
     return (
       <div>
-      <GoodsList 
+      <GoodsList
         type={type}
         id={id}
         from={from}

@@ -8,9 +8,9 @@ export default class Goods extends Component {
 
     static displayName = 'Goods';
     static propTypes = {
-        Seckill_GoodsImg: PropTypes.string,
-        Seckill_GoodsDetailURL: PropTypes.string,
-        Seckill_GoodsName: PropTypes.string,
+        GoodsImg: PropTypes.string,
+        GoodsDetailURL: PropTypes.string,
+        GoodsName: PropTypes.string,
         Seckill_OriginalPrice: PropTypes.number,
         Seckill_BargainNum: PropTypes.number,
         Seckill_Price: PropTypes.number,
@@ -19,7 +19,7 @@ export default class Goods extends Component {
 
     handleClick(e) {
         console.log("跳转商品详情");
-        window.location.href = this.props.Seckill_GoodsDetailURL;
+        window.location.href = this.props.GoodsDetailURL;
     }
 
     render() {
@@ -27,7 +27,7 @@ export default class Goods extends Component {
         const price = this.props.Seckill_Price;
         return (
             <div className="goods">
-                <div className="goods-pic" style={{backgroundImage: `url('${this.props.Seckill_GoodsImg}')`}}
+                <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}
                      onClick={(e) => {
                          this.handleClick();
                      }}>
@@ -35,7 +35,7 @@ export default class Goods extends Component {
                 </div>
                 <div className="goods_info">
                     <div className="goods-name">
-                        {this.props.Seckill_GoodsName}
+                        {this.props.GoodsName}
                     </div>
                     <div className="goods-price">
                         <span className="money-sign">￥</span>

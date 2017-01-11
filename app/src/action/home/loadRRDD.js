@@ -8,8 +8,10 @@ export const HOME_RRDD_BARGAIN_REQUEST = 'HOME_RRDD_BARGAIN_REQUEST';
 export const HOME_RRDD_BARGAIN_SUCCESS = 'HOME_RRDD_BARGAIN_SUCCESS';
 export const HOME_RRDD_BARGAIN_FAILURE = 'HOME_RRDD_BARGAIN_FAILURE';
 
-function loadGoodsList(id, from, size, refresh, showLoading) {
+function loadGoodsList(type, id, from, size, refresh, showLoading) {
+  const loadType = type;
   return {
+    loadType,
     refresh,
     from,
     [CALL_API]: {
@@ -38,7 +40,7 @@ exports.loadGoodsList = (refresh = false, showLoading = true, type = 1, id = 1, 
     }
 
     console.log("======= from:" + from);
-    return dispatch(loadGoodsList(id, from, size, refresh, showLoading));
+    return dispatch(loadGoodsList(type, id, from, size, refresh, showLoading));
   };
 };
 
