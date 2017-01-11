@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import isEmpty from 'lodash/isEmpty';
 
 import '../../../assets/common/widget/goodsItem.scss';
-import Goods from '../rrdd/Goods';
+import Goods from '../rrdd/SearchGoods';
 
 
 export default class GoodsItem extends Component {
@@ -41,9 +41,9 @@ export default class GoodsItem extends Component {
         };
 
         return (
-            <li className="goods-item">
-                <Goods {...goodsInfo1}/>
-                <Goods {...goodsInfo2}/>
+            <li className="goods-item-li">
+                <SearchGoods {...goodsInfo1}/>
+                <SearchGoods {...goodsInfo2}/>
             </li>
         )
     }

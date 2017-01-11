@@ -11,13 +11,31 @@
   width: 100%;
   box-sizing: border-box;
   background-size: 100% 100%;
+
+  .goods-stamp {
+    position: relative;
+    float: right;
+    right: 8px;
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    background-image: url("../../pages/home/images/icon_baoyou.png");
+  }
 }
 
 .goods-name {
-  font-size: 18px;
+  display: block;
+  font-size: 0.28rem;
   color: #333;
   padding-top: 20px;
   padding-bottom: 10px;
+  height: 60px;
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+  font-weight: bold;
 }
 
 .goods-price {
@@ -26,30 +44,84 @@
   font-weight: bold;
   padding-left: 6px;
 
-  .send-type {
-    background-color: red;
-    font-weight: normal;
-    color: white;
-    font-size: 0.08rem;
-    padding: 2px 8px 2px 8px;
-    margin-left: 20px;
-    border-radius: 5px;
-  }
-
   .money-sign {
     font-size: 8px;
   }
+
+  .original-price {
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    margin-left: 20px;
+    line-height: 35px;
+    max-width: 130px;
+    overflow: hidden;
+    font-weight: 100;
+    text-decoration: line-through;
+    top: 8px;
+    text-align: left;
+    color: #666666;
+  }
 }
 
-.pay-count {
-  padding-bottom: 20px;
-  font-size: 14px;
-  padding-top: 10px;
-  padding-left: 8px;
-  color: #666;
+.goods-percent {
+  display: inline-block;
+  position: relative;
+  top: 14px;
+  float: left;
+  margin-left: 14px;
+  width: 50%;
+  padding-right: 3px;
+  margin-bottom: 10px;
 
-  .user_count {
-    font-size: 16px;
-    padding-right: 30px;
+  .percent-progress {
+    display: inline-block;
+    position: relative;
+    float: left;
+    top: -38px;
+    text-align: left;
+    width: 100%;
+    max-height: 30px;
+    margin-right: 3px;
+
+    .progress-value {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      text-align: center;
+      top: -30px;
+      font-size: 20px;
+      color: White;
+    }
   }
+
+  .percent-surplus {
+    display: block;
+    position: relative;
+    line-height: 38px;
+    max-height: 38px;
+    text-align: center;
+    top: 25px;
+    font-size: 20px;
+    overflow: hidden;
+    color: #808080;
+
+    .percent-surplus-value {
+      color: #f24558;
+    }
+  }
+}
+
+.opt-btn {
+  position: relative;
+  float: right;
+  top: 14px;
+  right: 0;
+  width: 40%;
+  max-width: 50%;
+  height: 56px;
+  text-align: center;
+  margin-right: 10px;
+  background-color: #f24558;
+  z-index: 1;
 }

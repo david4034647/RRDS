@@ -1,5 +1,7 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
+import chunk from "lodash/chunk";
+
 import {
   HOME_RRDD_BARGAIN_REQUEST,
   HOME_RRDD_BARGAIN_SUCCESS,
@@ -43,24 +45,24 @@ function rrdd(state = {
         console.log(element);
         Data.push({
           Id: element._id,
-          GoodsName: element._source.goods_name,
-          GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
-          CreatTime: '2 hours ago',
-          Price: element._source.bargain_min_price,
-          OriginalPrice: element._source.bargain_original_price,
-          ActivityType: 1,
           BuyNum: element._source.goods_stock,
-          TotalNum: element._source.bargain_stock,
           CommentsNum: 34,
-          GoodsDetailURL: 'https://shop' + element._source.shop_id + '.wxrrd.com/goods/' + element._id,
-          BargainNum: 999,
-          IsBaoyou:  1
+          Seckill_GoodsName: element._source.goods_name,
+          Seckill_GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
+          Seckill_Price: element._source.goods_price,
+          Seckill_OriginalPrice: element._source.goods_original_price,
+          Seckill_TotalNum: element._source.bargain_stock,
+          Seckill_GoodsDetailURL: 'https://shop' + element._source.shop_id + '.wxrrd.com/goods/' + element._id,
+          Seckill_BargainNum: 999,
+          Seckill_IsBaoyou:  1
         });
-
       }
 
+      let finalData = chunk(Data, 2);
+
+      console.log(finalData)
       const articleData = {
-        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
+        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(finalData || [])]
       }
 
       // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
@@ -159,7 +161,7 @@ function rrdd(state = {
         error: true
       });
     }
-    
+
     default: {
       return state;
     }

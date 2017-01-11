@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import InfiniteList from '../../../component/widget/InfiniteList';
-import GoodsItem from '../rrdd/GoodsItem';
+import GoodsItem from '../rrdd/GoodsSearchItem';
 
 export default class SearchList extends Component {
     static displayName = 'HomeIndexSearchList';

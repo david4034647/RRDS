@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import GoodsBargainItem from './GoodsBargainItem';
 import GoodsGroupBuyItem from './GoodsGroupBuyItem';
+import GoodsSeckillItem from './GoodsSeckillItem';
 import InfiniteList from '../../../component/widget/InfiniteList';
 
 export default class GoodsList extends Component {
@@ -35,6 +36,8 @@ export default class GoodsList extends Component {
       return <GoodsBargainItem {...item} key={key} />;
     } else if (this.props.type === '2') {
       return <GoodsGroupBuyItem {...item} key={key} />;
+    } else if(this.props.type === '3'){
+        return <GoodsSeckillItem {...item} key={key}/>
     } else {
       return <GoodsGroupBuyItem {...item} key={key} />;
     }
