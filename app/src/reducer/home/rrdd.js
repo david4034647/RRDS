@@ -19,7 +19,6 @@ import {
 } from '../../action/home/loadRRDD';
 
 function rrdd(state = {
-
   isFetching: false,
   loaded: false,
   articleData: {},
@@ -34,13 +33,13 @@ function rrdd(state = {
     }
 
     case HOME_RRDD_BARGAIN_SUCCESS: {
-      console.log("===========xxxx=============");
-      console.log(state.articleData);
-      console.log(action.response);
+      // console.log("===========xxxx=============");
+      // console.log(state.articleData);
+      // console.log(action.response);
 
       let Data = [];
       for(let element of action.response.hits.hits) {
-        console.log(element);
+        //console.log(element);
 
         const isBaoyou = (element._source.goods_postage===0?0:1);
         const {PintuanPrice, PintuanMember} = parsePintuanItem(element._source.pintuan_item);
@@ -69,7 +68,11 @@ function rrdd(state = {
 
       }
 
+      let {from = 0} = state.articleData;
+      from = Number(from) + Data.length;
+
       const articleData = {
+        from: from,
         goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
       }
 
@@ -84,86 +87,6 @@ function rrdd(state = {
     }
 
     case HOME_RRDD_BARGAIN_FAILURE: {
-      return assign({}, state, {
-        isFetching: false,
-        error: true
-      });
-    }
-
-    case HOME_RRDD_REQUEST: {
-      return assign({}, state, {
-        isFetching: true
-      });
-    }
-    case HOME_RRDD_SUCCESS: {
-      console.log(action.response.result.CurrentPageIndex);
-      action.response.result.AllPageCount = 10;
-      //action.response.result.AllDataCount = 30;
-      console.log('HOME_RRDD_SUCCESS');
-      action.response.result.Data = [
-        {
-          Id: '1',
-          GoodsName: '1Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic1.jpg',
-          CreatTime: '2 hours ago',
-          Price: 100,
-          OriginalPrice: 200,
-          ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.sina.com'
-        },
-        {
-          Id: '2',
-          GoodsName: '2Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic2.jpg',
-          CreatTime: '2 hours ago',
-          Price: 76,
-          OriginalPrice: 120,
-          ActivityType: 1,
-          BuyNum: 477,
-          TotalNum: 1000,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.baidu.com'
-        },
-        {
-          Id: '3',
-          GoodsName: '33333Title of the Article',
-          GoodsImg: 'http://oc9nepvur.bkt.clouddn.com/articlePic3.jpg',
-          CreatTime: '3 hours ago',
-          Price: 10,
-          OriginalPrice: 10,
-          ActivityType: 1,
-          BuyNum: 377,
-          TotalNum: 800,
-          CommentsNum: 34,
-          GoodsDetailURL: 'http://www.dodoca.com'
-        }
-
-
-      ]
-      // console.log(state);
-
-
-      const {AllDataCount, AllPageCount, CurrentPageIndex, Data } = action.response.result;
-      const articleData = {
-        allSize: AllDataCount,
-        totalPage: AllPageCount,
-        page: CurrentPageIndex,
-        goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
-      }
-
-      // newsList: [...(action.refresh ? [] : state.newsList), ...(action.response.result.newsList || [])],
-      return assign({}, state, {
-        isFetching: false,
-        loaded: true,
-        error: false,
-        articleData
-      });
-    }
-
-    case HOME_RRDD_FAILURE: {
       return assign({}, state, {
         isFetching: false,
         error: true
