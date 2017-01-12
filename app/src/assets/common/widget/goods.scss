@@ -129,4 +129,9 @@
   margin-right: 10px;
   background-color: #f24558;
   z-index: 1;
+  border: none;
+}
+
+.am-button-primary:after {
+  border: none;
 }
