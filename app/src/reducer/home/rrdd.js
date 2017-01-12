@@ -1,6 +1,5 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
-import chunk from "lodash/chunk";
 import {
   HOME_RRDD_BARGAIN_REQUEST,
   HOME_RRDD_BARGAIN_SUCCESS,
@@ -23,8 +22,7 @@ function rrdd(state = {
   isFetching: false,
   loaded: false,
   articleData: {},
-  error: false,
-  type:0
+  error: false
 }, action) {
   //console.log(action);
   switch (action.type) {
@@ -40,15 +38,15 @@ function rrdd(state = {
       // console.log(action.response);
 
       let Data = [];
-      for(let element of action.response.hits.hits) {
-        //console.log(element);
-
+      
+      for(let i=0; i < action.response.hits.hits.length; i++) {
+        let element = action.response.hits.hits[i]; 
         const isBaoyou = (element._source.goods_postage===0?0:1);
-        const {PintuanPrice, PintuanMember} = parsePintuanItem(element._source.pintuan_item);
+        const {PintuanPrice = 0, PintuanMember = 0} = parsePintuanItem(element._source.pintuan_item);
 
         Data.push({
           Id: element._id,
-          GoodsName: element._source.goods_name,
+          GoodsName: 'david' + element._source.goods_name,
           GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
           CreatTime: '2 hours ago',
           GoodsDetailURL: element._source.goods_url,
@@ -58,33 +56,23 @@ function rrdd(state = {
           Bargain_Price: element._source.bargain_min_price,
           Bargain_OriginalPrice: element._source.bargain_original_price,
           Bargain_BuyNum: element._source.bargain_csale,
-          Bargain_StockNum: element._source.bargain_stock,
+          Bargain_StockNum: element._source.goods_stock,          
           Bargain_CountNum: element._source.bargain_join_members,
-
+          
           Pintuan_Price:  PintuanPrice,
           Pintuan_OriginalPrice:  element._source.goods_price,
           Pintuan_Stock:  element._source.pintuan_stock,
           Pintuan_Csale:  element._source.goods_csale,
-          Pintuan_Member: PintuanMember,
-
-          Seckill_OriginalPrice: element._source.goods_original_price,
-          Seckill_BargainNum: 999,
-          Seckill_Price: element._source.goods_price,
-          Seckill_TotalNum: 999
+          Pintuan_Member: PintuanMember
         });
-      }
+
+     }
 
       let {from = 0} = state.articleData;
       from = Number(from) + Data.length;
-      console.log("action ====================: ");
-      console.log(action.loadType);
-
-      if (action.loadType ==='3') {
-          Data = chunk(Data, 2);
-      }
 
       const articleData = {
-        from: from,
+        from: from+'',
         goodsList: [...(action.refresh ? [] : state.articleData && state.articleData.goodsList || []), ...(Data || [])]
       }
 
@@ -104,7 +92,7 @@ function rrdd(state = {
         error: true
       });
     }
-
+    
     default: {
       return state;
     }
@@ -117,7 +105,7 @@ export default getReducer(rrdd);
 /////////////// Customize Method ////////////////
 function parsePintuanItem(items) {
   if (!Array.isArray(items) || items.length === 0) {
-    return {PintuanPrice: 0, PintuanMember: 0};
+    return{PintuanPrice: 0, PintuanMember: 0};
   };
 
   let price = items[0].pintuan_item_price;
@@ -126,7 +114,7 @@ function parsePintuanItem(items) {
     if (item.pintuan_item_price < price) {
       price = item.pintuan_item_price;
       member = item.pintuan_item_member;
-    }
+    } 
   }
 
   return {PintuanPrice: price, PintuanMember: member};

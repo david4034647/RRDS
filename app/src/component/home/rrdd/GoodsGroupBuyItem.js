@@ -71,15 +71,15 @@ export default class GoodsGroupBuyItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.Pintuan_OriginalPrice);
 		const member = this.props.Pintuan_Member + "人团";
 		const totalNum = Number(this.props.Pintuan_Csale)+Number(this.props.Pintuan_Stock);
-		const percent = (this.props.Pintuan_Csale*100/totalNum).toFixed(0);
+		const percent = (this.props.Pintuan_Stock*100/totalNum).toFixed(0);
 		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
 			<li className="goods-item" >
 		        <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}  onClick={() => {
-            this.handleClick();
+		            this.handleClick();
 
-          	}}>
+		          	}}>
 		        	<div className="goods-stamp" style={{display: stampStyle}}  />
 		        </div>
 

@@ -71,7 +71,7 @@ export default class GoodsBargainItem extends Component {
 		const gradeOfPrice = this.gradeOfNum(price);
 		const originalPrice = this.formatCurrency(this.props.Bargain_OriginalPrice);
 		const totalNum = Number(this.props.Bargain_BuyNum)+Number(this.props.Bargain_StockNum);
-		const percent = (this.props.Bargain_BuyNum*100/totalNum).toFixed(0);
+		const percent = (this.props.Bargain_StockNum*100/totalNum).toFixed(0);
 		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
