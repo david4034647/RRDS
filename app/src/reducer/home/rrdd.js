@@ -59,13 +59,13 @@ function rrdd(state = {
           Bargain_Price: element._source.bargain_min_price,
           Bargain_OriginalPrice: element._source.bargain_original_price,
           Bargain_BuyNum: element._source.bargain_csale,
-          Bargain_StockNum: element._source.goods_stock,          
+          Bargain_StockNum: element._source.bargain_stock,          
           Bargain_CountNum: element._source.bargain_join_members,
           
           Pintuan_Price:  PintuanPrice,
           Pintuan_OriginalPrice:  element._source.goods_price,
           Pintuan_Stock:  element._source.pintuan_stock,
-          Pintuan_Csale:  element._source.goods_csale,
+          Pintuan_Csale:  element._source.pintuan_csale,
           Pintuan_Member: PintuanMember,
 
           Seckill_GoodsPrice: element._source.goods_price,

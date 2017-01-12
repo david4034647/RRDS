@@ -70,8 +70,8 @@ export default class GoodsBargainItem extends Component {
 		const integerOfPrice = this.integerOfNum(price);
 		const gradeOfPrice = this.gradeOfNum(price);
 		const originalPrice = this.formatCurrency(this.props.Bargain_OriginalPrice);
-		const totalNum = Number(this.props.Bargain_BuyNum)+Number(this.props.Bargain_StockNum);
-		const percent = (this.props.Bargain_StockNum*100/totalNum).toFixed(0);
+		const stock = Number(this.props.Bargain_StockNum)-Number(this.props.Bargain_BuyNum);
+		const percent = (stock*100/this.props.Bargain_StockNum).toFixed(0);
 		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
@@ -91,7 +91,7 @@ export default class GoodsBargainItem extends Component {
 		        	</div>
 
 		        	<div className="kanjia-percent">
-		        		<div className="percent-surplus">(剩余{(this.props.Bargain_StockNum) || 0}个)</div>
+		        		<div className="percent-surplus">(剩余{(stock) || 0}个)</div>
 		        		<div className="percent-progress"> 
 			        		<Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
 			        		<div className="progress-value">{percent || 0}%</div>
