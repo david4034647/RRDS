@@ -41,35 +41,35 @@ export default class Goods extends Component {
         const percent = Number(this.props.Seckill_Stock * 100 / totalNum).toFixed(0);
 
         return (
-            <div className="goods">
-                <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}
+            <div className="sec-goods">
+                <div className="sec-goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}
                      onClick={(e) => {
                          this.handleClick();
                      }}>
-                    <div className="goods-stamp" style={{display: stampStyle}}/>
+                    <div className="sec-goods-stamp" style={{display: stampStyle}}/>
                 </div>
-                <div className="goods_info">
-                    <div className="goods-name">
+                <div className="sec-goods_info">
+                    <div className="sec-goods-name">
                         {this.props.GoodsName}
                     </div>
-                    <div className="goods-price">
+                    <div className="sec-goods-price">
                         <span className="money-sign">￥</span>
                         <span> {price}</span>
-                        <div className="original-price">原价{originalPrice}</div>
+                        <div className="sec-original-price">原价{originalPrice}</div>
                     </div>
 
-                    <div className="goods-percent">
+                    <div className="sec-goods-percent">
                         <div className="percent-surplus">(剩余
                             <span className="percent-surplus-value">{this.props.Seckill_Stock}</span>个)
                         </div>
-                        <div className="percent-progress">
+                        <div className="sec-percent-progress">
                             <Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657"
                                   trailWidth="14" trailColor="#dfdfdf"/>
-                            <div className="progress-value">{percent}%</div>
+                            <div className="sec-progress-value">{percent}%</div>
                         </div>
                     </div>
 
-                    <Button className="opt-btn" size="small" inline type="primary" onClick={e => {
+                    <Button className="sec-opt-btn" size="small" inline type="primary" onClick={e => {
                         this.handleClick();
                     }}>{'立即抢 >'}</Button>
                 </div>
