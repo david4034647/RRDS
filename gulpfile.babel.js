@@ -11,7 +11,7 @@ import pkg from './package.json';
 
 gulp.task('clean', () => {
   return del([
-    'app/dist/**'
+    'app/duxing-rrdd-react/**'
   ]);
 });
 
@@ -32,7 +32,7 @@ gulp.task('webpack:build', (callback) => {
 });
 
 gulp.task('zip', ['build'], () => {
-  return gulp.src('dist/**/*.{html,js,css,jpg,jpeg,png,gif,svg,woff,woff2,ttf,eot}')
+  return gulp.src('duxing-rrdd-react/**/*.{html,js,css,jpg,jpeg,png,gif,svg,woff,woff2,ttf,eot}')
     .pipe(zip(`archive_${pkg.version}.zip`))
     .pipe(md5())
     .pipe(through2.obj(function(file, enc, cb) {
@@ -45,7 +45,7 @@ gulp.task('zip', ['build'], () => {
       }));
       cb();
     }))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('duxing-rrdd-react'));
 });
 
 gulp.task('default', ['build', 'zip']);

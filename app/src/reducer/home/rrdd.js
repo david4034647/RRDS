@@ -40,7 +40,7 @@ function rrdd(state = {
       // console.log(state.articleData);
       // console.log(action.response);
 
-      let Data = [];
+      var Data = new Array();
       
       for(let i=0; i < action.response.hits.hits.length; i++) {
         let element = action.response.hits.hits[i]; 
@@ -69,10 +69,10 @@ function rrdd(state = {
           Pintuan_Member: PintuanMember,
 
           Seckill_GoodsPrice: element._source.goods_price,
-          Seckill_Stock: element._source.goods_stock,
           Seckill_Price: element._source.seckill_price,
-          Seckill_Csale: element._source.goods_base_csale,
-          Seckill_BaseSale: element._source.goods_csale
+          Seckill_Csale: element._source.goods_csale,
+          Seckill_Stock: element._source.goods_stock,
+          Seckill_BaseSale: element._source.goods_base_csale
 
         });
 
