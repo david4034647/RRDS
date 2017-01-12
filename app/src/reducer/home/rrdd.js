@@ -1,5 +1,7 @@
 import getReducer from '../getReducer';
 import assign from 'object-assign';
+import chunk from "lodash/chunk";
+
 import {
   HOME_RRDD_BARGAIN_REQUEST,
   HOME_RRDD_BARGAIN_SUCCESS,
@@ -22,7 +24,8 @@ function rrdd(state = {
   isFetching: false,
   loaded: false,
   articleData: {},
-  error: false
+  error: false,
+  type: 0
 }, action) {
   //console.log(action);
   switch (action.type) {
@@ -46,7 +49,7 @@ function rrdd(state = {
 
         Data.push({
           Id: element._id,
-          GoodsName: 'david' + element._source.goods_name,
+          GoodsName: element._source.goods_name,
           GoodsImg: 'https://ms.wrcdn.com/' + element._source.goods_img,
           CreatTime: '2 hours ago',
           GoodsDetailURL: element._source.goods_url,
@@ -77,6 +80,10 @@ function rrdd(state = {
 
       let {from = 0} = state.articleData;
       from = Number(from) + Data.length;
+      
+      if (action.loadType ==='3') {
+          Data = chunk(Data, 2);
+      }
 
       const articleData = {
         from: from+'',
