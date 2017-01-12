@@ -44,7 +44,7 @@ function rrdd(state = {
       
       for(let i=0; i < action.response.hits.hits.length; i++) {
         let element = action.response.hits.hits[i]; 
-        const isBaoyou = (element._source.goods_postage===0?0:1);
+        const isBaoyou = (element._source.goods_postage===0?1:0);
         const {PintuanPrice = 0, PintuanMember = 0} = parsePintuanItem(element._source.pintuan_item);
 
         Data.push({

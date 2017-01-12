@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {ActivityIndicator} from 'antd-mobile';
 
 export default class Loading extends Component {
   static displayName = 'Loading';
@@ -7,8 +8,13 @@ export default class Loading extends Component {
     frog: PropTypes.object
   };
 
+  showToast() {
+    //this.setState({animating: !this.state.animating});
+  }
+
   componentDidMount() {
     // this.context.frog.ui.loading.show();
+    this.showToast;
   }
 
   componentWillUnmount() {
@@ -21,7 +27,8 @@ export default class Loading extends Component {
     // }
 
     return (
-      <div>Loading...</div>
+      //<div>加载中...</div>
+      <ActivityIndicator toast text="加载中..." />
     );
   }
 }
