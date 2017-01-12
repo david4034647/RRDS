@@ -67,10 +67,11 @@ function rrdd(state = {
           Pintuan_Csale:  element._source.goods_csale,
           Pintuan_Member: PintuanMember,
 
-          Seckill_OriginalPrice: element._source.goods_original_price,
-          Seckill_BargainNum: 999,
-          Seckill_Price: element._source.goods_price,
-          Seckill_TotalNum: 999
+          Seckill_GoodsPrice: element._source.goods_price,
+          Seckill_Stock: element._source.goods_stock,
+          Seckill_Price: element._source.seckill_price,
+          Seckill_Csale: element._source.goods_base_csale,
+          Seckill_BaseSale: element._source.goods_csale
         });
       }
 

@@ -8,15 +8,20 @@ import Goods from '../rrdd/Goods';
 export default class GoodsItem extends Component {
     static displayName = 'widgetArticleItem';
 
-    static propTypes = {};
+    static propTypes = {
+    };
 
     render() {
-        const goods = this.props;
-        console.log("goods: " + goods);
+        let goods =[];
+        for(let i in this.props) {
+            goods.push(this.props[i]);
+        }
+
         return (
             <li className="goods-item-li">
-                <Goods {...goods[0]}/>
-                <Goods {...goods[1]}/>
+                {goods.map(function (result) {
+                    return <Goods {...result}/>;
+                })}
             </li>
         )
     }
