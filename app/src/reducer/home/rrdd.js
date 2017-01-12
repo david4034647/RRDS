@@ -40,7 +40,7 @@ function rrdd(state = {
       // console.log(state.articleData);
       // console.log(action.response);
 
-      var Data = new Array();
+      let Data = [];
       
       for(let i=0; i < action.response.hits.hits.length; i++) {
         let element = action.response.hits.hits[i]; 
@@ -124,7 +124,8 @@ function parsePintuanItem(items) {
 
   let price = items[0].pintuan_item_price;
   let member = items[0].pintuan_item_member;
-  for(let item of items) {
+  for(let i=0 ;  i < items.length; i++) {
+    let item = items[i];
     if (item.pintuan_item_price < price) {
       price = item.pintuan_item_price;
       member = item.pintuan_item_member;
