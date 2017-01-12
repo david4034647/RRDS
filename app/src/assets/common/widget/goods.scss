@@ -1,4 +1,4 @@
-.goods {
+.sec-goods {
   position: relative;
   display: inline-block;
   width: 48%;
@@ -6,13 +6,13 @@
   background-color: white;
 }
 
-.goods-pic {
+.sec-goods-pic {
   height: 300px;
   width: 100%;
   box-sizing: border-box;
   background-size: 100% 100%;
 
-  .goods-stamp {
+  .sec-goods-stamp {
     position: relative;
     float: right;
     right: 8px;
@@ -23,7 +23,7 @@
   }
 }
 
-.goods-name {
+.sec-goods-name {
   display: block;
   font-size: 0.28rem;
   color: #333;
@@ -38,7 +38,7 @@
   font-weight: bold;
 }
 
-.goods-price {
+.sec-goods-price {
   font-size: 30px;
   color: red;
   font-weight: bold;
@@ -48,7 +48,7 @@
     font-size: 8px;
   }
 
-  .original-price {
+  .sec-original-price {
     display: inline-block;
     position: relative;
     font-size: 20px;
@@ -64,7 +64,7 @@
   }
 }
 
-.goods-percent {
+.sec-goods-percent {
   display: inline-block;
   position: relative;
   top: 14px;
@@ -74,7 +74,7 @@
   padding-right: 3px;
   margin-bottom: 10px;
 
-  .percent-progress {
+  .sec-percent-progress {
     display: inline-block;
     position: relative;
     float: left;
@@ -88,7 +88,7 @@
       max-height: 0.24rem;
     }
 
-    .progress-value {
+    .sec-progress-value {
       display: inline-block;
       position: relative;
       width: 100%;
@@ -117,7 +117,7 @@
   }
 }
 
-.opt-btn {
+.sec-opt-btn {
   position: relative;
   float: right;
   top: 14px;
