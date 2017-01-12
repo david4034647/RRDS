@@ -6,7 +6,7 @@ import Goods from '../rrdd/Goods';
 
 
 export default class GoodsItem extends Component {
-    static displayName = 'widgetArticleItem';
+    static displayName = 'widgetGoodsItem';
 
     static propTypes = {
     };
@@ -19,8 +19,8 @@ export default class GoodsItem extends Component {
 
         return (
             <li className="goods-item-li">
-                {goods.map(function (result) {
-                    return <Goods {...result}/>;
+                {goods.map(function (result, index) {
+                    return <Goods key={index}  {...result}/>;
                 })}
             </li>
         )

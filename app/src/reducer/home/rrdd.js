@@ -44,7 +44,7 @@ function rrdd(state = {
       
       for(let i=0; i < action.response.hits.hits.length; i++) {
         let element = action.response.hits.hits[i]; 
-        const isBaoyou = (element._source.goods_postage===0?0:1);
+        const isBaoyou = (element._source.goods_postage===0?1:0);
         const {PintuanPrice = 0, PintuanMember = 0} = parsePintuanItem(element._source.pintuan_item);
 
         Data.push({
@@ -59,20 +59,20 @@ function rrdd(state = {
           Bargain_Price: element._source.bargain_min_price,
           Bargain_OriginalPrice: element._source.bargain_original_price,
           Bargain_BuyNum: element._source.bargain_csale,
-          Bargain_StockNum: element._source.goods_stock,          
+          Bargain_StockNum: element._source.bargain_stock,          
           Bargain_CountNum: element._source.bargain_join_members,
           
           Pintuan_Price:  PintuanPrice,
           Pintuan_OriginalPrice:  element._source.goods_price,
           Pintuan_Stock:  element._source.pintuan_stock,
-          Pintuan_Csale:  element._source.goods_csale,
+          Pintuan_Csale:  element._source.pintuan_csale,
           Pintuan_Member: PintuanMember,
 
           Seckill_GoodsPrice: element._source.goods_price,
-          Seckill_Stock: element._source.goods_stock,
           Seckill_Price: element._source.seckill_price,
-          Seckill_Csale: element._source.goods_base_csale,
-          Seckill_BaseSale: element._source.goods_csale
+          Seckill_Csale: element._source.goods_csale,
+          Seckill_Stock: element._source.goods_stock,
+          Seckill_BaseSale: element._source.goods_base_csale
 
         });
 
@@ -124,7 +124,8 @@ function parsePintuanItem(items) {
 
   let price = items[0].pintuan_item_price;
   let member = items[0].pintuan_item_member;
-  for(let item of items) {
+  for(let i=0 ;  i < items.length; i++) {
+    let item = items[i];
     if (item.pintuan_item_price < price) {
       price = item.pintuan_item_price;
       member = item.pintuan_item_member;

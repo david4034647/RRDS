@@ -13,7 +13,7 @@ import pxtorem from 'postcss-pxtorem';
 console.log(`__dirname:${__dirname}`);
 
 const srcPath = path.join(__dirname, 'app/src');
-const distPath = path.join(__dirname, 'app/dist');
+const distPath = path.join(__dirname, 'app/duxing-rrdd-react');
 const mainPath = path.join(srcPath, '/main');
 
 function getLocalIp() {
@@ -151,7 +151,7 @@ module.exports = function makeWebpackConfig(options) {
     css: cssLoader,
     'scss|sass': [cssLoader, 'sass-loader?outputStyle=expanded']
   };
-  const publicPath = options.hotComponents ? '/' : '/dist';
+  const publicPath = options.hotComponents ? '/' : '/duxing-rrdd-react';
   // const publicPath = '/dist';
   const output = {
     path: distPath,

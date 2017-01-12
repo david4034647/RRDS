@@ -15,7 +15,7 @@ function callApi({
   customHeaders = {}
 }) {
   const fullUrl = /^https?:\/\//.test(endpoint) ? endpoint : `${API_ROOT}${endpoint}`;
-  console.log("URL[" + fullUrl + "]");
+  //console.log("URL[" + fullUrl + "]");
 
   const headers = new Headers();
   if (json) {
@@ -44,7 +44,7 @@ function callApi({
       headers,
       body
     }).then(response => {
-      console.log(response);
+      //console.log(response);
       if (!response.ok) {
         return Promise.reject({
           retCode: response.status,
@@ -54,14 +54,14 @@ function callApi({
 
       return response.json();
     }).then(json => {
-      console.log("json:" + json);
+      //console.log("json:" + json);
       if (json.retCode) {
         return Promise.reject(json);
       }
 
       return json;
     }).catch((err) => {
-      console.log("err:" + err);
+      //console.log("err:" + err);
       return Promise.reject({
         retCode: err.retCode,
         retMsg: err.retMsg
@@ -115,7 +115,7 @@ export default store => next => action => {
     json,
     customHeaders
   }).then((response) => {
-    console.log(response);
+    //console.log(response);
     next(actionWith({
       response,
       type: successType,

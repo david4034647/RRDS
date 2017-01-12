@@ -30,9 +30,9 @@ module.exports = {
 		]
 	},
 	output: {
-		path: path.join(__dirname, '..', '/app/dist'),
+		path: path.join(__dirname, '..', '/app/duxing-rrdd-react'),
 		filename: 'js/[name]-[chunkhash].js',
-		publicPath: '/dist/', // or your host
+		publicPath: '//david4034647.oschina.io/', // or your host
 		chunkFilename: '[name]-[chunkhash].chunk.js'
 	},
 	plugins: [
@@ -64,7 +64,7 @@ module.exports = {
 			filename: 'index.html',
 			template: './app/src/index.template.html'
 		}),
-		new CleanPlugin(['../app/dist'])
+		new CleanPlugin(['../app/duxing-rrdd-react'])
 	],
 	postcss: [
 		require('autoprefixer'),

@@ -22,6 +22,7 @@ export default (force = false) => {
       return null;
     }
 
-    return dispatch(loadUser());
+    return null;
+    //return dispatch(loadUser());
   };
 };
