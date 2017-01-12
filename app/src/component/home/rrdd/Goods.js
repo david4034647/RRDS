@@ -38,7 +38,7 @@ export default class Goods extends Component {
         const stampStyle = this.showStamp(this.props.IsBaoyou);
         const totalNum = Number(this.props.Seckill_Csale) + Number(this.props.Seckill_Stock)
             + Number(this.props.Seckill_BaseSale);
-        const percent = Number(this.props.Seckill_Csale * 100 / totalNum).toFixed(0);
+        const percent = Number(this.props.Seckill_Stock * 100 / totalNum).toFixed(0);
 
         return (
             <div className="goods">
