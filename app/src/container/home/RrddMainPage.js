@@ -1,14 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {loadGoodsList} from '../../action/home/loadRRDD';
-import BottomTabBar from '../../component/widget/common/BottomTabBar';
-import NavBar, {NAVBAR_NORMAL, NAVBAR_CLOSE, NAVBAR_SEARCH} from '../../component/widget/common/NavBar';
 import GoodsList from '../../component/home/rrdd/GoodsList';
-import {Tabs, WhiteSpace, List} from 'antd-mobile';
-import router from '../../router';
 import queryString from 'query-string';
-
-const TabPane = Tabs.TabPane;
 
 import '../../assets/pages/home/index.scss';
 
@@ -16,7 +10,6 @@ class RrddMainPage extends Component {
   static displayName = 'RrddMainPage';
 
   static propTypes = {
-    selNow: PropTypes.number,
     loadGoodsList: PropTypes.func,
     articleData: PropTypes.object,
     isFetching: PropTypes.bool,
@@ -27,34 +20,21 @@ class RrddMainPage extends Component {
     size: PropTypes.number
   };
 
-  static defaultProps = {
-    selNow: 4
-  };
-
   componentWillMount() {
     const type = queryString.parse(location.search).type;
     const id = queryString.parse(location.search).id;
     this.props.loadGoodsList(false, true, type, id, 10);
-  }
-
-  componentDidMount() {
-  }
-
-  handleClick() {
-    location.href = router[`search`];
-  }
+  } 
 
   render() {
-    const {selNow} = this.props;
-    const tabBarProps = {
-      selNow
-    };
 
     const type = queryString.parse(location.search).type;
     const id = queryString.parse(location.search).id;
     const from = queryString.parse(location.search).from;
     const size = queryString.parse(location.search).size;
-    console.log(type + id + from + size);
+    const title = queryString.parse(location.search).title;
+    console.log(type + id + from + size + title);
+    if (title) {document.title = title;};
 
     // todo 添加具体的内容
     return (

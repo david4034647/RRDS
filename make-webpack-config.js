@@ -98,7 +98,7 @@ function getHtmlPlugins() {
   return glob.sync('**/*.js', {cwd: mainPath}).map((file) => {
     console.log(file);
     const match = titleRegExp.exec(fs.readFileSync(path.join(mainPath, file), 'utf8'));
-    const title = match ? match[1] : '财富派';
+    const title = match ? match[1] : '人人兜兜';
     const name = file.substr(0, file.length - 3);
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,

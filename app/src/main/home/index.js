@@ -1,4 +1,3 @@
-/* title: 首页 */
 import renderToApp from '../../renderToApp';
 import reducer from '../../reducer/home/rrdd';
 import RrddMainPage from '../../container/home/RrddMainPage';
