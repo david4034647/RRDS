@@ -38,7 +38,8 @@ export default class Goods extends Component {
         const stampStyle = this.showStamp(this.props.IsBaoyou);
         const totalNum = Number(this.props.Seckill_Csale) + Number(this.props.Seckill_Stock)
             + Number(this.props.Seckill_BaseSale);
-        const percent = Number(this.props.Seckill_Stock * 100 / totalNum).toFixed(0);
+        const saleNum = Number(this.props.Seckill_Csale) + Number(this.props.Seckill_BaseSale);      
+        const percent = Number(saleNum * 100 / totalNum).toFixed(0);
 
         return (
             <div className="sec-goods">
@@ -62,7 +63,7 @@ export default class Goods extends Component {
                         <div className="sec-percent-progress">
                             <Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657"
                                   trailWidth="14" trailColor="#dfdfdf"/>
-                            <div className="sec-progress-value">{(this.props.Seckill_Stock||0) + "/" + (totalNum||0)}</div>
+                            <div className="sec-progress-value">{(saleNum||0) + "/" + (totalNum||0)}</div>
                         </div>
                         <div className="percent-surplus">(剩余
                             <span className="percent-surplus-value">{this.props.Seckill_Stock}</span>个)
