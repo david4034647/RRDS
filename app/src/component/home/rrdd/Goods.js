@@ -62,7 +62,7 @@ export default class Goods extends Component {
                         <div className="sec-percent-progress">
                             <Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657"
                                   trailWidth="14" trailColor="#dfdfdf"/>
-                            <div className="sec-progress-value">{percent}%</div>
+                            <div className="sec-progress-value">{(this.props.Seckill_Stock||0) + "/" + (totalNum||0)}</div>
                         </div>
                         <div className="percent-surplus">(剩余
                             <span className="percent-surplus-value">{this.props.Seckill_Stock}</span>个)

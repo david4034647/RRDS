@@ -94,7 +94,7 @@ export default class GoodsBargainItem extends Component {
 		        		<div className="percent-surplus">(剩余{(stock) || 0}个)</div>
 		        		<div className="percent-progress"> 
 			        		<Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
-			        		<div className="progress-value">{percent || 0}%</div>
+			        		<div className="progress-value">{(stock||0) + "/" + (this.props.Bargain_StockNum||0)}</div>
 			        		
 		        		</div>
 		        	</div>

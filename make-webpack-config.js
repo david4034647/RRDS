@@ -151,7 +151,7 @@ module.exports = function makeWebpackConfig(options) {
     css: cssLoader,
     'scss|sass': [cssLoader, 'sass-loader?outputStyle=expanded']
   };
-  const publicPath = options.hotComponents ? '/' : '/duxing-rrdd-react';
+  const publicPath = options.hotComponents ? '/' : '/rrds/duxing-rrdd-react';
   // const publicPath = '/dist';
   const output = {
     path: distPath,
