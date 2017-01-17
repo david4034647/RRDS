@@ -71,7 +71,7 @@ export default class GoodsGroupBuyItem extends Component {
 		const originalPrice = this.formatCurrency(this.props.Pintuan_OriginalPrice);
 		const member = this.props.Pintuan_Member + "人团";
 		const stock = Number(this.props.Pintuan_Stock)-Number(this.props.Pintuan_Csale);
-		const percent = (stock*100/this.props.Pintuan_Stock).toFixed(0);
+		const percent = (Number(this.props.Pintuan_Csale)*100/Number(this.props.Pintuan_Stock)).toFixed(0);
 		const stampStyle = this.showStamp(this.props.IsBaoyou);
 
 		return (
@@ -95,7 +95,7 @@ export default class GoodsGroupBuyItem extends Component {
 		        		<div className="percent-surplus">(剩余{(stock) || 0}个)</div>
 		        		<div className="percent-progress"> 
 			        		<Line className="progress" percent={percent || 0} strokeWidth="14" strokeColor="#f24657" trailWidth="14" trailColor="#dfdfdf" />
-			        		<div className="progress-value">{percent || 0}%</div>
+			        		<div className="progress-value">{(this.props.Pintuan_Csale||0) + "/" + (this.props.Pintuan_Stock||0)}</div>
 			        		
 		        		</div>
 		        	</div>
