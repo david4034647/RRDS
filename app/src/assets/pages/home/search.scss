@@ -2,6 +2,18 @@
 @import "../../common/widget/base";
 @import "../../common/widget/baseloading";
 
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.content {
+  top: 1.72rem;
+  position: relative;
+  z-index: auto;
+}
+
 .am-search.am-search-start .am-search-input {
   margin-right: 0;
 }
@@ -24,14 +36,14 @@
 }
 
 .my-drawer {
-  position: fixed;
+  position: absolute;
   height: 100%;
   overflow: auto;
-  z-index: 1;
+  z-index: auto;
 }
 
 .my-drawer .am-drawer-sidebar {
-  width: 80%;
+  width: 90%;
   background-color: #fff;
   overflow: auto;
 }
@@ -39,5 +51,72 @@
 .my-drawer .am-drawer-sidebar .am-list {
   padding: 0;
 }
+
+.am-drawer-overlay {
+  z-index: 2;
+}
+
+.am-drawer-sidebar {
+  z-index: 3;
+}
+
+.filter-window {
+
+  .label-filter {
+    margin-top: 0.36rem;
+    margin-left: 0.32rem;
+    vertical-align: middle;
+
+    .img-filter {
+      height: 0.26rem;
+      width: 0.26rem;
+      margin-right: 0.20rem;
+    }
+
+    .filter-name {
+      font-size: 0.3rem;
+    }
+  }
+
+  .container-filter_func {
+    margin-top: 0.3rem;
+
+    .filter-item {
+      text-align: center;
+
+      .btn-filter {
+        width: 29%;
+        height: 0.6rem;
+        font-size: 0.24rem;
+        line-height: 0.6rem;
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+        background-color: #ebedf2;
+      }
+    }
+  }
+
+  .price-filter {
+    text-align: center;
+
+    .sign_label {
+      display: inline-block;
+    }
+    .btn-price {
+      width: 43%;
+      height: 0.6rem;
+      font-size: 0.24rem;
+      line-height: 0.6rem;
+      margin-top: 0.3rem;
+      margin-left: 10px;
+      margin-right: 10px;
+      display: inline-block;
+      text-align: center;
+      background-color: #ebedf2;
+    }
+  }
+}
+
 
 

@@ -14,7 +14,7 @@ export default class SearchList extends Component {
         totalPage: PropTypes.number,
         isFetching: PropTypes.bool,
         HeadImg: PropTypes.string,
-        error: PropTypes.bool
+        error: PropTypes.bool,
     };
 
     constructor(props) {
@@ -23,7 +23,9 @@ export default class SearchList extends Component {
 
     //加载更多
     loadMore = () => {
-        this.props.loadGoods(false, false);
+        const type = '3';
+        const id = '3';
+        this.props.loadGoods(false, false, type, id, 10);
     };
 
     renderItem = (item, key) => {
@@ -39,7 +41,7 @@ export default class SearchList extends Component {
 
     render() {
         const goodsList = this.props.goodsList;
-        const hasMore = this.props.page === 0 || this.props.page < this.props.totalPage;
+        const hasMore = true
 
         if (isEmpty(this.props.goodsList) || this.props.goodsList.length === 0 && !hasMore) {
             return null;
