@@ -35,6 +35,108 @@
   color: red;
 }
 
+.search-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #EEEEEE;
+  z-index: 999;
+  display: block;
+
+  .search-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .search-body {
+    top: 0.88rem;
+    position: relative;
+
+    .hot-search-container {
+      background-color: white;
+      margin-top: 0.2rem;
+      padding: 0.4rem 0.3rem 0.6rem 0.3rem;
+
+      .hot-search-label {
+        color: #999;
+        font-size: 0.3rem;
+      }
+
+      .tag-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .am-tag {
+          height: 0.6rem;
+          width: auto;
+          max-width: 2rem;
+          line-height: 0.6rem;
+          border-radius: 0.3rem;
+          margin: 0.3rem 0.3rem 0 0;
+          text-align: center;
+          padding: 0;
+
+          .am-tag-text {
+            font-size: 0.28rem;
+            margin: 0 0.2rem 0 0.2rem;
+            color: #666;
+            height: 0.6rem;
+            line-height: 0.6rem;
+          }
+        }
+      }
+    }
+
+    .search_record {
+      margin: 0.2rem 0 0 0;
+      background-color: white;
+      padding: 0.4rem 0.3rem 0.6rem 0.3rem;
+
+      .search-history-label {
+        color: #999999;
+        font-size: 0.3rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .record-item {
+        display: flex;
+        height: 0.9rem;
+        border-bottom: 1px solid #d4d4d4;
+        line-height: 0.9rem;
+        padding: 0 0.3rem 0 0.3rem;
+        align-items: center;
+
+        .img-record-label {
+          height: 0.32rem;
+          width: 0.32rem;
+        }
+
+        .record-text {
+          display: inline-block;
+          color: #555;
+          font-size: 0.28rem;
+          margin-left: 0.3rem;
+          flex: 10;
+        }
+
+        .img-record-delete {
+          height: 0.2rem;
+          width: 0.2rem;
+          max-width: 0.2rem;
+        }
+      }
+
+      .clear-all {
+        font-size: 0.28rem;
+        color: #999;
+        margin-top: 0.3rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
 .my-drawer {
   position: absolute;
   height: 100%;
@@ -103,6 +205,7 @@
     .sign_label {
       display: inline-block;
     }
+
     .btn-price {
       width: 43%;
       height: 0.6rem;

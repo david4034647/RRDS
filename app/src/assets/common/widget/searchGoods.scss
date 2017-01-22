@@ -1,4 +1,4 @@
-.goods {
+.search-goods {
   position: relative;
   display: inline-block;
   width: 48%;
@@ -6,18 +6,21 @@
   background-color: white;
 }
 
-.goods-pic {
+.search-goods-pic {
   height: 300px;
   width: 100%;
   box-sizing: border-box;
-  background-size: 100% 100%;
+  background-size: 100% 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.goods-name {
+.search-goods-name {
   display: block;
   font-size: 0.28rem;
   color: #333;
   padding-top: 20px;
+  margin-left: 4px;
   padding-bottom: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -26,13 +29,13 @@
   font-weight: bold;
 }
 
-.goods-price {
+.search-goods-price {
   font-size: 30px;
   color: red;
   font-weight: bold;
   padding-left: 6px;
 
-  .send-type {
+  .search-send-type {
     background-color: red;
     font-weight: normal;
     color: white;
@@ -42,19 +45,23 @@
     border-radius: 5px;
   }
 
-  .money-sign {
+  .search-send-hidden {
+    display: none;
+  }
+
+  .search-money-sign {
     font-size: 8px;
   }
 }
 
-.pay-count {
+.search-pay-count {
   padding-bottom: 20px;
   font-size: 14px;
   padding-top: 10px;
   padding-left: 8px;
   color: #666;
 
-  .user_count {
+  .search_user_count {
     font-size: 16px;
     padding-right: 30px;
   }

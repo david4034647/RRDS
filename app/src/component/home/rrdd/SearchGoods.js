@@ -8,10 +8,11 @@ export default class Goods extends Component {
         GoodsImg: PropTypes.string,
         GoodsName: PropTypes.string,
         GoodsDetailURL: PropTypes.string,
-        GoodsPrices: PropTypes.string,
+        Seckill_GoodsPrice: PropTypes.string,
         SendType: PropTypes.string,
-        PayCount: PropTypes.number,
-        CommontCount: PropTypes.number,
+        Seckill_Stock: PropTypes.number,
+        Seckill_Csale: PropTypes.number,
+        IsBaoyou: PropTypes.bool,
     };
 
     toGoodsDetails() {
@@ -19,23 +20,25 @@ export default class Goods extends Component {
     }
 
     render() {
+        const isBaoyou = this.props.IsBaoyou;
         return (
-            <div className="goods">
-                <div className="goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}} onClick={() => {
-                    this.toGoodsDetails();
-                }}/>
+            <div className="search-goods">
+                <div className="search-goods-pic" style={{backgroundImage: `url('${this.props.GoodsImg}')`}}
+                     onClick={() => {
+                         this.toGoodsDetails();
+                     }}/>
                 <div className="goods_info">
-                    <div className="goods-name">
+                    <div className="search-goods-name">
                         {this.props.GoodsName}
                     </div>
-                    <div className="goods-price">
-                        <span className="money-sign">￥</span>
-                        <span> {this.props.GoodsPrices}</span>
-                        <span className="send-type">{this.props.SendType}</span>
+                    <div className="search-goods-price">
+                        <span className="search-money-sign">￥</span>
+                        <span>{this.props.Seckill_GoodsPrice}</span>
+                        <span className={isBaoyou ? "search-send-type" : "search-send-hidden"}>包邮</span>
                     </div>
-                    <div className="pay-count">
-                        <span className="user_count">{this.props.PayCount}付款</span>
-                        <span className="comment_count">{this.props.CommontCount}条评论</span>
+                    <div className="search-pay-count">
+                        <span className="search_user_count">{this.props.Seckill_Stock}付款</span>
+                        <span className="comment_count">{this.props.Seckill_Csale}条评论</span>
                     </div>
                 </div>
             </div>
